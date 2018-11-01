@@ -12,7 +12,8 @@
     "prebuild": "yarn run clean:dist && yarn run clean:bs && yarn run build:bs",
     "build:bs": "bsb -make-world",
     "clean:bs": "bsb -clean-world",
-    "clean:dist": "rm -rf dist"
+    "clean:dist": "rm -rf dist",
+    "test": "exit 0"
   },
   "files": [
     "src",
