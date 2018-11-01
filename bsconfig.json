@@ -1,0 +1,28 @@
+{
+  "name": "bs-emotion",
+  "sources": [
+    "src",
+    {
+      "dir": "examples",
+      "type" : "dev"
+    }
+  ],
+  "bs-dependencies": [
+    "@minima.app/re-css"
+  ],
+  "bs-dev-dependencies": [
+    "reason-react",
+    "re-classnames"
+  ],
+  "reason": { "react-jsx": 2 },
+  "refmt": 3,
+  "bsc-flags": ["-open Belt"],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "warnings": {
+    "number": "-44"
+  }
+}
