@@ -676,10 +676,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@minima.app/re-css@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-0.0.1.tgz#1f97434755c24eb033582e9a3529940a5cc9a3b4"
-  integrity sha512-Cz2FSw1lEZ3pUCwy1rEbQkVlIbIdmj2cm0P/OvM0sSLGhyLmo/uawTKZTkAH07U/Uz7gsrqQxPvJ2zoCSA3BIQ==
+"@minima.app/re-css@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-0.0.2.tgz#a09f306248a3fe531e02d197e0269b847b39d861"
+  integrity sha512-hg02nEgjY470SKoRbHm4fQTFnogRjv+jklbUqFPhoEoNb0r3otcw3SLe79oDazVJ8dCO63DTH06rMC5NLuqQzQ==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

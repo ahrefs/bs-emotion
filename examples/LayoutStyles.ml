@@ -2,8 +2,8 @@ open Emotion
 
 let container = css [
   display `grid;
-  gridTemplateRows (`many [`fr 1.; `maxContent;]);
-  gridTemplateColumns (`one (`fr 1.));
+  gridTemplateRows (`list [`fr 1.; `maxContent;]);
+  gridTemplateColumns (`list [`fr 1.;]);
 ]
 
 let main = css [

@@ -96,7 +96,7 @@ let note = css ~extend: smallText [
 (* Grid *)
 let grid = css [
   display `grid;
-  gridTemplateColumns (`one (`repeat (`n 3, [`px 100;])));
+  gridTemplateColumns (`list [`repeat (`n 3, [`px 100;]);]);
   gridAutoRows (`px 100);
   gridGap (`px 10);
   gridTemplateAreas (`areas ["a a a"; ". . ."; ". . .";]);
