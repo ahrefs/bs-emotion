@@ -708,8 +708,7 @@ let repeat =
   `repeat((value, trackList));
 let autoFill = `autoFill;
 let autoFit = `autoFit;
-let one = (x: Grid.Template.value) => `one(x);
-let many = (xs: list(Grid.Template.value)) => `many(xs);
+let list = (xs: list(Grid.Template.value)) => `list(xs);
 let ident = (x: string) => `ident(x);
 let nIdent = (n: int, ident: string) => `nIdent((n, ident));
 let span = x => `span(x);

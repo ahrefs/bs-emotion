@@ -8,8 +8,8 @@ begin
 
   global "html, body, #app" [
     display `grid;
-    gridTemplateRows (`one (`fr 1.));
-    gridTemplateColumns (`one (`fr 1.));
+    gridTemplateRows (`list [`fr 1.;]);
+    gridTemplateColumns (`list [`fr 1.;]);
     gridGap `zero;
     margin `zero;
     padding `zero;
