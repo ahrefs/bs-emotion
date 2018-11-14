@@ -32,6 +32,12 @@ module Selector = {
 
 let p = (prop, value) => [(prop, value)]->Declaration.pack;
 
+let important = (v: declaration) =>
+  switch (v->Declaration.unpack) {
+  | [(prop, value)] => [(prop, value ++ " !important")]->Declaration.pack
+  | v => v->Declaration.pack
+  };
+
 let label = (x: string) => p("label", x);
 
 let display = x => p("display", x->Display.toString);
