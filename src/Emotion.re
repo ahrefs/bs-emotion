@@ -150,8 +150,8 @@ let backgroundImages = x =>
     x->List.map(BackgroundImage.toString)->Helpers.joinWith(", "),
   );
 let backgroundOrigin = x => p("backgroundOrigin", x->BackgroundBox.toString);
-let backgroundPosition = x =>
-  p("backgroundPosition", x->LengthPercentage.toString2);
+let backgroundPosition = (x, y) =>
+  p("backgroundPosition", LengthPercentage.toString2(x, y));
 let backgroundRepeat = x =>
   p("backgroundRepeat", x->BackgroundRepeat.toString);
 let backgroundRepeat2 = x =>
