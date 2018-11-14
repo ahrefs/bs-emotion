@@ -28,7 +28,7 @@ let shape = css [
   (* :hover selector, same as `select ":hover" [ ... ]` *)
   hover [
     borderRadius (`pct 50.);
-    cursor `grab;
+    important (cursor `grab);
   ];
 ]
 

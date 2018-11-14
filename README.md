@@ -60,7 +60,7 @@ let shape = css [
   (* :hover selector, same as `select ":hover" [ ... ]` *)
   hover [
     borderRadius (`pct 50.);
-    cursor `grab;
+    important (cursor `grab);
   ];
 ]
 
@@ -83,7 +83,7 @@ let text ~size = css [
   (* Complex selector that uses .container class defined above *)
   (* Rendered as: `.container:hover .text {...}` *)
   select {j|.$container:hover &|j} [
-    fontSize Calc.((`px size) + (`pct 150.));
+    fontSize Calc.(((`px size) + (`pct 150.)) * (`n 1.5));
   ];
 
   (* @media quiery with nested selectors *)

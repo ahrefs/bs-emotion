@@ -1,5 +1,8 @@
 # History
 
+## 0.0.5
+Add `important` ([#4](https://github.com/alexfedoseev/bs-emotion/pull/4) by **[@jsiebern](https://github.com/jsiebern)**)
+
 ## 0.0.4
 Update `re-css`: simplify `Calc.n` type to one variant: `` `n(float) ``.
 
