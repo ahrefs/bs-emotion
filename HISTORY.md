@@ -1,5 +1,8 @@
 # History
 
+## 0.0.6
+Fix `backgroundPosition` ([#5](https://github.com/alexfedoseev/bs-emotion/pull/5) by **[@jsiebern](https://github.com/jsiebern)**)
+
 ## 0.0.5
 Add `important` ([#4](https://github.com/alexfedoseev/bs-emotion/pull/4) by **[@jsiebern](https://github.com/jsiebern)**)
 
