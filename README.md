@@ -39,7 +39,7 @@ let container = css [
 
   display `flex;
   flexFlow `column `nowrap;
-  alignItems `center;
+  alignFlexItems `center;
 ]
 
 let shape = css [
@@ -47,8 +47,8 @@ let shape = css [
 
   display `flex;
   flexFlow `row `nowrap;
-  alignItems `center;
-  justifyContent `center;
+  alignFlexItems `center;
+  justifyFlexContent `center;
   transitionProperty "border-radius";
   transitionDuration (`ms 100);
   transitionTimingFunction `easeInOut;
