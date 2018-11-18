@@ -1,0 +1,29 @@
+{
+  "name": "bs-emotion-ppx",
+  "sources": [
+    {
+      "dir": "src",
+      "type": "ppx",
+      "ppx": ["EmotionPpx"]
+    },
+    {
+      "dir": "test",
+      "type": "dev",
+      "ppx": ["EmotionPpx"],
+      "backend": "js"
+    }
+  ],
+  "entries": [
+    {
+      "backend": "native",
+      "type": "ppx",
+      "main-module": "EmotionPpx"
+    },
+    {
+    "backend": "js",
+    "main-module": "Test"
+  }
+  ],
+  "refmt": 3,
+  "ocaml-dependencies": ["compiler-libs"]
+}

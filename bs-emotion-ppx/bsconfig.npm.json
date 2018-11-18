@@ -1,0 +1,10 @@
+{
+  "name": "bs-emotion-ppx",
+  "sources": ["src"],
+  "refmt": 3,
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js"
+}

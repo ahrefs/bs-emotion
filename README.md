@@ -20,30 +20,55 @@ Then add it to `bsconfig.json`:
 ]
 ```
 
+### `bs-emotion-ppx`
+If you want to auto-label generated classnames for easier debugging, you can install `bs-emotion-ppx`:
+
+```shell
+# yarn
+yarn add bs-emotion-ppx
+# or npm
+npm install --save bs-emotion-ppx
+```
+
+Then add it to `bsconfig.json`:
+
+```json
+"bs-dependencies": [
+  "bs-emotion",
+  "bs-emotion-ppx"
+],
+"ppx-flags": ["bs-emotion-ppx/ppx"]
+```
+
 ## Usage
-
 ### Defining styles
+There are 2 ways to define a CSS class:
 
-_Example is in OCaml syntax, but you can use Reason too._
+```ocaml
+open Emotion
+
+(* If you use ppx *)
+let button = [%css [ ... ]]
+
+(* If you don't use ppx *)
+let button = css [ ... ]
+```
+
+And here's real-world example:
+> It's in OCaml syntax, but you can use Reason too.
 
 ```ocaml
 (* ComponentStyles.ml *)
 
 open Emotion
 
-let container = css [
-  (* label hashed classnames for readability *)
-  (* I prolly should do ppx to automate that *)
-  label "container";
-
+let container = [%css [
   display `flex;
   flexFlow `column `nowrap;
   alignFlexItems `center;
-]
+]]
 
-let shape = css [
-  label "shape";
-
+let shape = [%css [
   display `flex;
   flexFlow `row `nowrap;
   alignFlexItems `center;
@@ -61,9 +86,9 @@ let shape = css [
     borderRadius (`pct 50.);
     important (cursor `grab);
   ];
-]
+]]
 
-(* Dynamic styling *)
+(* Dynamic styling (not supported by `ppx` yet) *)
 let text ~size = css [
   label "text";
 
@@ -102,21 +127,17 @@ let bounce = keyframes [
   (100, [ transform (`translateY `zero); ]);
 ]
 
-let animated = css [
-  label "animated";
-
+let animated = [%css [
   (* Use generated animation name *)
   animationName bounce;
   animationDuration (`ms 300);
   animationIterationCount (`i 7);
-]
+]]
 
 (* Compose things *)
-let smallText = css [
-  label "smallText";
-
+let smallText = [%css [
   fontSize (`em 0.8);
-]
+]]
 
 let note = css ~extend: smallText [
   label "note";

@@ -1,18 +1,12 @@
 open Emotion
 
-let container = css [
-  (* label hashed classnames for readability *)
-  (* I prolly should do ppx to automate that *)
-  label "container";
-
+let container = [%css [
   display `flex;
   flexFlow `column `nowrap;
   alignFlexItems `center;
-]
+]]
 
-let shape = css [
-  label "shape";
-
+let shape = [%css [
   display `flex;
   flexFlow `row `nowrap;
   alignFlexItems `center;
@@ -30,7 +24,7 @@ let shape = css [
     borderRadius (`pct 50.);
     important (cursor `grab);
   ];
-]
+]]
 
 (* Dynamic styling *)
 let text ~size = css [
@@ -71,21 +65,17 @@ let bounce = keyframes [
   (100, [ transform (`translateY `zero); ]);
 ]
 
-let animated = css [
-  label "animated";
-
+let animated = [%css [
   (* Use generated animation name *)
   animationName bounce;
   animationDuration (`ms 300);
   animationIterationCount (`i 7);
-]
+]]
 
 (* Compose things *)
-let smallText = css [
-  label "smallText";
-
+let smallText = [%css [
   fontSize (`em 0.8);
-]
+]]
 
 let note = css ~extend: smallText [
   label "note";
@@ -94,20 +84,20 @@ let note = css ~extend: smallText [
 ]
 
 (* Grid *)
-let grid = css [
+let grid = [%css [
   display `grid;
   gridTemplateColumns (`list [`repeat (`n 3, [`px 100;]);]);
   gridAutoRows (`px 100);
   gridGap (`px 10);
   gridTemplateAreas (`areas ["a a a"; ". . ."; ". . .";]);
-]
+]]
 
-let gridItem = css [
+let gridItem = [%css [
   padding (`px 10);
   color (`hex "fff");
   backgroundColor (`hex "29d");
-]
+]]
 
-let gridItem1 = css [
+let gridItem1 = [%css [
   gridArea "a";
-]
+]]
