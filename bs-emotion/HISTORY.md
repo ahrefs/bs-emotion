@@ -1,5 +1,8 @@
 # History
 
+## 0.0.8
+Update `re-css`.
+
 ## 0.0.7
 Include [`re-css`](https://github.com/minima-app/re-css) in package. All `Css` types and functions are available under `Emotion.Css` namespace. Please, drop direct `re-css` dependency from your projects.
 
