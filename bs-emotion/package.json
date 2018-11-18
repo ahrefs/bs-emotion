@@ -22,7 +22,7 @@
     "bs-platform": "^4.0.5"
   },
   "dependencies": {
-    "@minima.app/re-css": "0.0.5",
+    "@minima.app/re-css": "0.0.6",
     "emotion": "9.2.12"
   },
   "devDependencies": {
