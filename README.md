@@ -7,16 +7,15 @@ Get the package:
 
 ```shell
 # yarn
-yarn add @minima.app/re-css bs-emotion
+yarn add bs-emotion
 # or npm
-npm install --save @minima.app/re-css bs-emotion
+npm install --save bs-emotion
 ```
 
 Then add it to `bsconfig.json`:
 
 ```json
 "bs-dependencies": [
-  "@minima.app/re-css",
   "bs-emotion"
 ]
 ```

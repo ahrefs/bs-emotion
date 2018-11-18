@@ -1,5 +1,9 @@
 open Css;
 
+module Css = {
+  include Css;
+};
+
 module Calc = Css.Calc;
 
 /* ===== ⚙️ API Implementation ===== */
