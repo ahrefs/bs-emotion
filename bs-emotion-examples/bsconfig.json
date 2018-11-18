@@ -1,22 +1,16 @@
 {
-  "name": "bs-emotion",
-  "sources": [
-    "src",
-    {
-      "dir": "examples",
-      "type" : "dev"
-    }
-  ],
+  "name": "bs-emotion-examples",
+  "sources": ["src"],
   "bs-dependencies": [
-    "@minima.app/re-css"
-  ],
-  "bs-dev-dependencies": [
     "reason-react",
-    "re-classnames"
+    "re-classnames",
+    "bs-emotion",
+    "bs-emotion-ppx"
   ],
   "reason": { "react-jsx": 2 },
   "refmt": 3,
   "bsc-flags": ["-open Belt"],
+  "ppx-flags": ["bs-emotion-ppx/ppx"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true
