@@ -48,10 +48,10 @@ There are 2 ways to define a CSS class:
 open Emotion
 
 (* If you use ppx *)
-let button = [%css [ ... ]]
+let button = [%css [ ... ]] (* -> "css-HASHED-button" *)
 
 (* If you don't use ppx *)
-let button = css [ ... ]
+let button = css [ ... ] (* -> "css-HASHED" *)
 ```
 
 And here's real-world example:
