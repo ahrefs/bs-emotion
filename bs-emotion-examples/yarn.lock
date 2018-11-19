@@ -676,10 +676,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@minima.app/re-css@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-0.0.5.tgz#2b0db6471954311c4f9ccb2076e2cd3a924c5ce2"
-  integrity sha512-U8CdzPcOpijDwxcGvRP4d3MeeCLxV9Meia68nBgdb4qrdAnnd7jmeDqH9qoekGjq/TmW4Qres6pl/xJHFj8VJA==
+"@minima.app/re-css@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-0.0.6.tgz#65f95e70248e857a73adfd3b80d2eab7f580627c"
+  integrity sha512-x8ppuuusA+pwUz+sZssgy6C925FHvhc/JnCYcFS13P0MfPZO2GwNLmUiJjN2YmgGYmxJM8X/IwB5/ky48lMrCQ==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1065,17 +1065,17 @@ browserslist@^4.0.0, browserslist@^4.1.0:
     electron-to-chromium "^1.3.82"
     node-releases "^1.0.1"
 
-bs-emotion-ppx@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/bs-emotion-ppx/-/bs-emotion-ppx-0.0.0.tgz#9564662a5fb4127cbcbebb428108d5cd5774365e"
-  integrity sha512-DnajLR7nvRmwEvbT4kAcAeXqrTSpKMQH8HyMiuJz8tELQikk5/R3rnnIoPcUaPzqxyQXQ/8hN4zpZr2ShqbCwg==
+bs-emotion-ppx@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/bs-emotion-ppx/-/bs-emotion-ppx-0.0.4.tgz#a96cec0244b6d5842f32a2aa2cabecced333c829"
+  integrity sha512-N1jdtNwSE4LZD7IaFw1uygJQ1J7uIwe191xqNfzvvRauSpGfFKzuDVxBs1o1lJ1CD5w70LWtX9oKrAKNAdxjwA==
 
-bs-emotion@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/bs-emotion/-/bs-emotion-0.0.7.tgz#c5376beea5f1ddd3c3c6dbffae4018056eae8b69"
-  integrity sha512-iWXCR027Uyg4/8Fl32YyRiajobGkMLLHumLfloSLqI1KmN6ZWYOMGG+x3eq37gbM/WHman6IPPDhbJS1YePGVA==
+bs-emotion@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/bs-emotion/-/bs-emotion-0.0.8.tgz#f0c1ed71c5594f7ffcadc3afd9012f954fc33f9b"
+  integrity sha512-W5LDZjHTlw9xJYnqWUTIzAytJ4UlC6noYF7tKKfsepkodJ8MRCMBbczEQ3NQ6EHpIPGuQzNhcTlTzOZP1x/31w==
   dependencies:
-    "@minima.app/re-css" "0.0.5"
+    "@minima.app/re-css" "0.0.6"
     emotion "9.2.12"
 
 bs-platform@4.0.7:
