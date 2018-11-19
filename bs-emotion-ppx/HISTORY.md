@@ -1,5 +1,8 @@
 # History
 
+## 0.0.4
+Support match.
+
 ## 0.0.3
 Support functions (with 2 arguments max) and empty lists.
 

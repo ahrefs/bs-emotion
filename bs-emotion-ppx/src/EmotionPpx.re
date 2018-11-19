@@ -4,9 +4,14 @@ open Asttypes;
 open Parsetree;
 open Longident;
 
+type contents =
+  | Match(expression, list(case))
+  | ListOf(expression)
+  | EmptyList;
+
 let lid = name => {txt: Lident(name), loc: Location.none};
 
-let css = (className, decls) =>
+let css = (className, contents) =>
   Exp.apply(
     Exp.ident(lid("css")),
     [
@@ -25,9 +30,10 @@ let css = (className, decls) =>
                   ),
                 ],
               ),
-              switch (decls) {
-              | Some(decls) => Exp.construct(lid("::"), decls)
-              | None => Exp.construct(lid("[]"), None)
+              switch (contents) {
+              | Match(exp, cases) => Exp.match(exp, cases)
+              | ListOf(decls) => Exp.construct(lid("::"), Some(decls))
+              | EmptyList => Exp.construct(lid("[]"), None)
               },
             ]),
           ),
@@ -68,7 +74,7 @@ let cssMapper = _ => {
       ) =>
       Str.value(
         Nonrecursive,
-        [Vb.mk(Pat.var(className), css(className, None))],
+        [Vb.mk(Pat.var(className), css(className, EmptyList))],
       )
 
     | Pstr_value(
@@ -83,7 +89,10 @@ let cssMapper = _ => {
                   PStr([
                     {
                       pstr_desc:
-                        Pstr_eval({pexp_desc: Pexp_construct(_, exp)}, []),
+                        Pstr_eval(
+                          {pexp_desc: Pexp_construct(_, Some(exp))},
+                          [],
+                        ),
                     },
                   ]),
                 )),
@@ -93,7 +102,7 @@ let cssMapper = _ => {
       ) =>
       Str.value(
         Nonrecursive,
-        [Vb.mk(Pat.var(className), css(className, Some(exp)))],
+        [Vb.mk(Pat.var(className), css(className, ListOf(exp)))],
       )
 
     | Pstr_value(
@@ -115,7 +124,7 @@ let cssMapper = _ => {
                           {
                             pstr_desc:
                               Pstr_eval(
-                                {pexp_desc: Pexp_construct(_, exp)},
+                                {pexp_desc: Pexp_construct(_, Some(exp))},
                                 [],
                               ),
                           },
@@ -132,7 +141,7 @@ let cssMapper = _ => {
         [
           Vb.mk(
             Pat.var(className),
-            Exp.fun_(label, optExp, pat, css(className, Some(exp))),
+            Exp.fun_(label, optExp, pat, css(className, ListOf(exp))),
           ),
         ],
       )
@@ -162,7 +171,10 @@ let cssMapper = _ => {
                                 {
                                   pstr_desc:
                                     Pstr_eval(
-                                      {pexp_desc: Pexp_construct(_, exp)},
+                                      {
+                                        pexp_desc:
+                                          Pexp_construct(_, Some(exp)),
+                                      },
                                       [],
                                     ),
                                 },
@@ -185,11 +197,112 @@ let cssMapper = _ => {
               label1,
               optExp1,
               pat1,
-              Exp.fun_(label2, optExp2, pat2, css(className, Some(exp))),
+              Exp.fun_(label2, optExp2, pat2, css(className, ListOf(exp))),
             ),
           ),
         ],
       )
+
+    | Pstr_value(
+        Nonrecursive,
+        [
+          {
+            pvb_pat: {ppat_desc: Ppat_var(className)},
+            pvb_expr: {
+              pexp_desc:
+                Pexp_fun(
+                  label,
+                  optExp,
+                  pat,
+                  {
+                    pexp_desc:
+                      Pexp_extension((
+                        {txt: "css"},
+                        PStr([
+                          {
+                            pstr_desc:
+                              Pstr_eval(
+                                {pexp_desc: Pexp_match(exp, cases)},
+                                [],
+                              ),
+                          },
+                        ]),
+                      )),
+                  },
+                ),
+            },
+          },
+        ],
+      ) =>
+      Str.value(
+        Nonrecursive,
+        [
+          Vb.mk(
+            Pat.var(className),
+            Exp.fun_(label, optExp, pat, css(className, Match(exp, cases))),
+          ),
+        ],
+      )
+
+    | Pstr_value(
+        Nonrecursive,
+        [
+          {
+            pvb_pat: {ppat_desc: Ppat_var(className)},
+            pvb_expr: {
+              pexp_desc:
+                Pexp_fun(
+                  label1,
+                  optExp1,
+                  pat1,
+                  {
+                    pexp_desc:
+                      Pexp_fun(
+                        label2,
+                        optExp2,
+                        pat2,
+                        {
+                          pexp_desc:
+                            Pexp_extension((
+                              {txt: "css"},
+                              PStr([
+                                {
+                                  pstr_desc:
+                                    Pstr_eval(
+                                      {pexp_desc: Pexp_match(exp, cases)},
+                                      [],
+                                    ),
+                                },
+                              ]),
+                            )),
+                        },
+                      ),
+                  },
+                ),
+            },
+          },
+        ],
+      ) =>
+      Str.value(
+        Nonrecursive,
+        [
+          Vb.mk(
+            Pat.var(className),
+            Exp.fun_(
+              label1,
+              optExp1,
+              pat1,
+              Exp.fun_(
+                label2,
+                optExp2,
+                pat2,
+                css(className, Match(exp, cases)),
+              ),
+            ),
+          ),
+        ],
+      )
+
     | _ => default_mapper.structure_item(mapper, item)
     },
 };
