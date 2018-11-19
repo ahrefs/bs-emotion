@@ -25,18 +25,14 @@ If you want to auto-label generated classnames for easier debugging, you can ins
 
 ```shell
 # yarn
-yarn add bs-emotion-ppx
+yarn add --dev bs-emotion-ppx
 # or npm
-npm install --save bs-emotion-ppx
+npm install --save-dev bs-emotion-ppx
 ```
 
 Then add it to `bsconfig.json`:
 
 ```json
-"bs-dependencies": [
-  "bs-emotion",
-  "bs-emotion-ppx"
-],
 "ppx-flags": ["bs-emotion-ppx/ppx"]
 ```
 

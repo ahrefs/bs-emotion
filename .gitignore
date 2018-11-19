@@ -5,3 +5,5 @@ dist/
 .merlin
 .bsb.lock
 *.bs.js
+
+bs-emotion-ppx/ppx
