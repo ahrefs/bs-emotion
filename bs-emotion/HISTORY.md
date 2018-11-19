@@ -1,5 +1,8 @@
 # History
 
+## 0.0.9
+Fix `clipPath` ([#11](https://github.com/alexfedoseev/bs-emotion/pull/11) by **[@jsiebern](https://github.com/jsiebern)**)
+
 ## 0.0.8
 Update `re-css`.
 
