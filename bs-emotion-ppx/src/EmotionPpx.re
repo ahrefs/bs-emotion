@@ -6,7 +6,7 @@ open Longident;
 
 let lid = name => {txt: Lident(name), loc: Location.none};
 
-let css = (className, exp) =>
+let css = (className, decls) =>
   Exp.apply(
     Exp.ident(lid("css")),
     [
@@ -25,7 +25,10 @@ let css = (className, exp) =>
                   ),
                 ],
               ),
-              Exp.construct(lid("::"), exp),
+              switch (decls) {
+              | Some(decls) => Exp.construct(lid("::"), decls)
+              | None => Exp.construct(lid("[]"), None)
+              },
             ]),
           ),
         ),
@@ -49,6 +52,37 @@ let cssMapper = _ => {
                   PStr([
                     {
                       pstr_desc:
+                        Pstr_eval(
+                          {
+                            pexp_desc:
+                              Pexp_construct({txt: Lident("[]")}, None),
+                          },
+                          [],
+                        ),
+                    },
+                  ]),
+                )),
+            },
+          },
+        ],
+      ) =>
+      Str.value(
+        Nonrecursive,
+        [Vb.mk(Pat.var(className), css(className, None))],
+      )
+
+    | Pstr_value(
+        Nonrecursive,
+        [
+          {
+            pvb_pat: {ppat_desc: Ppat_var(className)},
+            pvb_expr: {
+              pexp_desc:
+                Pexp_extension((
+                  {txt: "css"},
+                  PStr([
+                    {
+                      pstr_desc:
                         Pstr_eval({pexp_desc: Pexp_construct(_, exp)}, []),
                     },
                   ]),
@@ -59,8 +93,9 @@ let cssMapper = _ => {
       ) =>
       Str.value(
         Nonrecursive,
-        [Vb.mk(Pat.var(className), css(className, exp))],
+        [Vb.mk(Pat.var(className), css(className, Some(exp)))],
       )
+
     | Pstr_value(
         Nonrecursive,
         [
@@ -97,10 +132,11 @@ let cssMapper = _ => {
         [
           Vb.mk(
             Pat.var(className),
-            Exp.fun_(label, optExp, pat, css(className, exp)),
+            Exp.fun_(label, optExp, pat, css(className, Some(exp))),
           ),
         ],
       )
+
     | Pstr_value(
         Nonrecursive,
         [
@@ -149,7 +185,7 @@ let cssMapper = _ => {
               label1,
               optExp1,
               pat1,
-              Exp.fun_(label2, optExp2, pat2, css(className, exp)),
+              Exp.fun_(label2, optExp2, pat2, css(className, Some(exp))),
             ),
           ),
         ],

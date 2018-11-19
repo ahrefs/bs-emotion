@@ -15,3 +15,5 @@ let baz ~x ~y = [%css [
   prop x;
   prop y;
 ]]
+
+let empty = [%css []]
