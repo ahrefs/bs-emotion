@@ -13,7 +13,7 @@
     "build": "bsb -make-world -backend native",
     "test": "bsb -make-world -backend js",
     "clean": "bsb -clean-world",
-    "box": "rm -rf dist/* && mkdir -p dist/src && yarn run build && cp package.json dist/ && cp bsconfig.npm.json dist/bsconfig.json && cp lib/bs/native/emotionppx.native dist/ppx && touch dist/src/EmotionPpx.re"
+    "box": "rm -rf dist/* && mkdir -p dist/src && yarn run build && cp package.json README.md dist/ && cp bsconfig.npm.json dist/bsconfig.json && cp lib/bs/native/emotionppx.native dist/ppx && touch dist/src/EmotionPpx.re"
   },
   "files": [
     "src",
