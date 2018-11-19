@@ -6,6 +6,33 @@ open Longident;
 
 let lid = name => {txt: Lident(name), loc: Location.none};
 
+let css = (className, exp) =>
+  Exp.apply(
+    Exp.ident(lid("css")),
+    [
+      (
+        "",
+        Exp.construct(
+          lid("::"),
+          Some(
+            Exp.tuple([
+              Exp.apply(
+                Exp.ident(lid("label")),
+                [
+                  (
+                    "",
+                    Exp.constant(Asttypes.Const_string(className.txt, None)),
+                  ),
+                ],
+              ),
+              Exp.construct(lid("::"), exp),
+            ]),
+          ),
+        ),
+      ),
+    ],
+  );
+
 let cssMapper = _ => {
   ...default_mapper,
   structure_item: (mapper, item) =>
@@ -32,35 +59,97 @@ let cssMapper = _ => {
       ) =>
       Str.value(
         Nonrecursive,
+        [Vb.mk(Pat.var(className), css(className, exp))],
+      )
+    | Pstr_value(
+        Nonrecursive,
+        [
+          {
+            pvb_pat: {ppat_desc: Ppat_var(className)},
+            pvb_expr: {
+              pexp_desc:
+                Pexp_fun(
+                  label,
+                  optExp,
+                  pat,
+                  {
+                    pexp_desc:
+                      Pexp_extension((
+                        {txt: "css"},
+                        PStr([
+                          {
+                            pstr_desc:
+                              Pstr_eval(
+                                {pexp_desc: Pexp_construct(_, exp)},
+                                [],
+                              ),
+                          },
+                        ]),
+                      )),
+                  },
+                ),
+            },
+          },
+        ],
+      ) =>
+      Str.value(
+        Nonrecursive,
         [
           Vb.mk(
             Pat.var(className),
-            Exp.apply(
-              Exp.ident(lid("css")),
-              [
-                (
-                  "",
-                  Exp.construct(
-                    lid("::"),
-                    Some(
-                      Exp.tuple([
-                        Exp.apply(
-                          Exp.ident(lid("label")),
-                          [
-                            (
-                              "",
-                              Exp.constant(
-                                Asttypes.Const_string(className.txt, None),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Exp.construct(lid("::"), exp),
-                      ]),
-                    ),
-                  ),
+            Exp.fun_(label, optExp, pat, css(className, exp)),
+          ),
+        ],
+      )
+    | Pstr_value(
+        Nonrecursive,
+        [
+          {
+            pvb_pat: {ppat_desc: Ppat_var(className)},
+            pvb_expr: {
+              pexp_desc:
+                Pexp_fun(
+                  label1,
+                  optExp1,
+                  pat1,
+                  {
+                    pexp_desc:
+                      Pexp_fun(
+                        label2,
+                        optExp2,
+                        pat2,
+                        {
+                          pexp_desc:
+                            Pexp_extension((
+                              {txt: "css"},
+                              PStr([
+                                {
+                                  pstr_desc:
+                                    Pstr_eval(
+                                      {pexp_desc: Pexp_construct(_, exp)},
+                                      [],
+                                    ),
+                                },
+                              ]),
+                            )),
+                        },
+                      ),
+                  },
                 ),
-              ],
+            },
+          },
+        ],
+      ) =>
+      Str.value(
+        Nonrecursive,
+        [
+          Vb.mk(
+            Pat.var(className),
+            Exp.fun_(
+              label1,
+              optExp1,
+              pat1,
+              Exp.fun_(label2, optExp2, pat2, css(className, exp)),
             ),
           ),
         ],
