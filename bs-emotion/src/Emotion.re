@@ -185,7 +185,7 @@ let boxShadows = x =>
     ->Helpers.joinWith(", "),
   );
 
-let clipPath = x => p("clipPath", x->Url.toString);
+let clipPath = x => p("clipPath", x->ClipPath.toString);
 
 let visibility = x => p("visibility", x->Visibility.toString);
 let backfaceVisibility = x => p("backfaceVisibility", x->Visibility.toString);
