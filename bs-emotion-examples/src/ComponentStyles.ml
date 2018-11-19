@@ -27,9 +27,8 @@ let shape = [%css [
 ]]
 
 (* Dynamic styling *)
-let text ~size = css [
-  label "text";
-
+(* NOTE: ppx supports functions with max 2 arguments *)
+let text ~size = [%css [
   color (`hex "fff");
   fontSize (`px size);
   fontWeight 700;
@@ -56,7 +55,7 @@ let text ~size = css [
       color (`hex "fff");
     ];
   ];
-]
+]]
 
 (* Define keyframes *)
 let bounce = keyframes [
