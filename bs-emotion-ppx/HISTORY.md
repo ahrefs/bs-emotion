@@ -1,5 +1,8 @@
 # History
 
+## 0.0.6
+Fix `package.json`.
+
 ## 0.0.5
 Update publishing flow.
 
