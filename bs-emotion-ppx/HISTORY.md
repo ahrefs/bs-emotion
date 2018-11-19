@@ -1,5 +1,8 @@
 # History
 
+## 0.0.5
+Update publishing flow.
+
 ## 0.0.4
 Support match.
 
