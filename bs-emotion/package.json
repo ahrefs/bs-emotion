@@ -1,6 +1,6 @@
 {
   "name": "bs-emotion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "BuckleScript bindings to Emotion",
   "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
   "license": "MIT",
