@@ -1312,31 +1312,6 @@ module Css: {
       let toString: t => string;
     };
     module Flow: {let toString: (Direction.t, Wrap.t) => string;};
-    module Align: {
-      type t = [
-        | `baseline
-        | `center
-        | `flexEnd
-        | `flexStart
-        | `normal
-        | `selfEnd
-        | `selfStart
-        | `stretch
-      ];
-      let toString: t => string;
-    };
-    module Justify: {
-      type t = [
-        | `center
-        | `flexEnd
-        | `flexStart
-        | `normal
-        | `spaceAround
-        | `spaceBetween
-        | `stretch
-      ];
-      let toString: t => string;
-    };
   };
   module Grid: {
     module Flex: {
@@ -1723,36 +1698,6 @@ module Css: {
       ];
       let toString: t => string;
     };
-    module BlockAlignment: {
-      type t = [
-        | `auto
-        | `baseline
-        | `center
-        | `firstBaseline
-        | `gridEnd
-        | `gridStart
-        | `lastBaseline
-        | `normal
-        | `stretch
-      ];
-      let toString: t => string;
-    };
-    module TrackAlignment: {
-      type t = [
-        | `baseline
-        | `center
-        | `firstBaseline
-        | `gridEnd
-        | `gridStart
-        | `lastBaseline
-        | `normal
-        | `spaceAround
-        | `spaceBetween
-        | `spaceEvenly
-        | `stretch
-      ];
-      let toString: t => string;
-    };
     module TemplateAreas: {
       type t = [ | `areas(list(string)) | `none];
       let toString: t => string;
@@ -1761,6 +1706,115 @@ module Css: {
       type t = [ | `column | `columnDense | `row | `rowDense];
       let toString: t => string;
     };
+  };
+  module AlignItems: {
+    type t = [
+      | `baseline
+      | `center
+      | `end_
+      | `firstBaseline
+      | `flexEnd
+      | `flexStart
+      | `lastBaseline
+      | `normal
+      | `selfEnd
+      | `selfStart
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
+  };
+  module AlignSelf: {
+    type t = [
+      | `auto
+      | `baseline
+      | `center
+      | `end_
+      | `firstBaseline
+      | `flexEnd
+      | `flexStart
+      | `lastBaseline
+      | `normal
+      | `selfEnd
+      | `selfStart
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
+  };
+  module AlignContent: {
+    type t = [
+      | `baseline
+      | `center
+      | `end_
+      | `firstBaseline
+      | `flexEnd
+      | `flexStart
+      | `lastBaseline
+      | `normal
+      | `spaceAround
+      | `spaceBetween
+      | `spaceEvenly
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
+  };
+  module JustifyItems: {
+    type t = [
+      | `baseline
+      | `center
+      | `end_
+      | `firstBaseline
+      | `flexEnd
+      | `flexStart
+      | `lastBaseline
+      | `left
+      | `normal
+      | `right
+      | `selfEnd
+      | `selfStart
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
+  };
+  module JustifySelf: {
+    type t = [
+      | `auto
+      | `baseline
+      | `center
+      | `end_
+      | `firstBaseline
+      | `flexEnd
+      | `flexStart
+      | `lastBaseline
+      | `left
+      | `normal
+      | `right
+      | `selfEnd
+      | `selfStart
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
+  };
+  module JustifyContent: {
+    type t = [
+      | `center
+      | `end_
+      | `flexEnd
+      | `flexStart
+      | `left
+      | `normal
+      | `right
+      | `spaceAround
+      | `spaceBetween
+      | `spaceEvenly
+      | `start
+      | `stretch
+    ];
+    let toString: t => string;
   };
   module BasicShape: {
     module ShapePosition: {
@@ -2011,7 +2065,7 @@ let boxShadows:
     ),
   ) =>
   declaration;
-let clipPath: Css.Url.t => declaration;
+let clipPath: Css.ClipPath.t => declaration;
 let visibility: Css.Visibility.t => declaration;
 let backfaceVisibility: Css.Visibility.t => declaration;
 let color: Css.Color.t => declaration;
@@ -2170,12 +2224,6 @@ let flexBasis: Css.LengthPercentageAuto.t => declaration;
 let flexDirection: Css.Flex.Direction.t => declaration;
 let flexWrap: Css.Flex.Wrap.t => declaration;
 let flexFlow: (Css.Flex.Direction.t, Css.Flex.Wrap.t) => declaration;
-let alignFlexSelf: Css.Flex.Align.t => declaration;
-let alignFlexItems: Css.Flex.Align.t => declaration;
-let alignFlexContent: Css.Flex.Align.t => declaration;
-let justifyFlexSelf: Css.Flex.Justify.t => declaration;
-let justifyFlexItems: Css.Flex.Justify.t => declaration;
-let justifyFlexContent: Css.Flex.Justify.t => declaration;
 let order: int => declaration;
 let gridTemplateRows: Css.Grid.Template.t => declaration;
 let gridTemplateColumns: Css.Grid.Template.t => declaration;
@@ -2189,15 +2237,15 @@ let gridGap: Css.LengthPercentage.t => declaration;
 let gridGaps: (Css.LengthPercentage.t, Css.LengthPercentage.t) => declaration;
 let gridRowGap: Css.Grid.Gap.t => declaration;
 let gridColumnGap: Css.Grid.Gap.t => declaration;
-let alignGridItems: Css.Grid.BlockAlignment.t => declaration;
-let alignGridSelf: Css.Grid.BlockAlignment.t => declaration;
-let justifyGridItems: Css.Grid.BlockAlignment.t => declaration;
-let justifyGridSelf: Css.Grid.BlockAlignment.t => declaration;
-let alignGridContent: Css.Grid.TrackAlignment.t => declaration;
-let justifyGridContent: Css.Grid.TrackAlignment.t => declaration;
 let gridArea: string => declaration;
 let gridTemplateAreas: Css.Grid.TemplateAreas.t => declaration;
 let gridAutoFlow: Css.Grid.AutoFlow.t => declaration;
+let alignSelf: Css.AlignSelf.t => declaration;
+let alignItems: Css.AlignItems.t => declaration;
+let alignContent: Css.AlignContent.t => declaration;
+let justifySelf: Css.JustifySelf.t => declaration;
+let justifyItems: Css.JustifyItems.t => declaration;
+let justifyContent: Css.JustifyContent.t => declaration;
 let zIndex: int => declaration;
 let content: string => declaration;
 let unsafe: (string, 'a) => declaration;

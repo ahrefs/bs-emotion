@@ -3,14 +3,14 @@ open Emotion
 let container = [%css [
   display `flex;
   flexFlow `column `nowrap;
-  alignFlexItems `center;
+  alignItems `center;
 ]]
 
 let shape = [%css [
   display `flex;
   flexFlow `row `nowrap;
-  alignFlexItems `center;
-  justifyFlexContent `center;
+  alignItems `center;
+  justifyContent `center;
   transitionProperty "border-radius";
   transitionDuration (`ms 100);
   transitionTimingFunction `easeInOut;

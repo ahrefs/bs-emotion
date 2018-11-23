@@ -439,12 +439,6 @@ let flexDirection = x => p("flexDirection", x->Flex.Direction.toString);
 let flexWrap = x => p("flexWrap", x->Flex.Wrap.toString);
 let flexFlow = (direction, wrap) =>
   p("flex-flow", Flex.Flow.toString(direction, wrap));
-let alignFlexSelf = x => p("alignSelf", x->Flex.Align.toString);
-let alignFlexItems = x => p("alignItems", x->Flex.Align.toString);
-let alignFlexContent = x => p("alignContent", x->Flex.Align.toString);
-let justifyFlexSelf = x => p("justifySelf", x->Flex.Justify.toString);
-let justifyFlexItems = x => p("justifyItems", x->Flex.Justify.toString);
-let justifyFlexContent = x => p("justifyContent", x->Flex.Justify.toString);
 let order = (x: int) => p("order", {j|$x|j});
 
 let gridTemplateRows = x => p("gridTemplateRows", x->Grid.Template.toString);
@@ -467,22 +461,18 @@ let gridGaps = (x, y) => p("gridGap", LengthPercentage.toString2(x, y));
 let gridRowGap = x => p("gridRowGap", x->Grid.Gap.toString);
 let gridColumnGap = x => p("gridColumnGap", x->Grid.Gap.toString);
 
-let alignGridItems = x => p("alignItems", x->Grid.BlockAlignment.toString);
-let alignGridSelf = x => p("alignSelf", x->Grid.BlockAlignment.toString);
-let justifyGridItems = x =>
-  p("justifyItems", x->Grid.BlockAlignment.toString);
-let justifyGridSelf = x => p("justifySelf", x->Grid.BlockAlignment.toString);
-
-let alignGridContent = x =>
-  p("alignContent", x->Grid.TrackAlignment.toString);
-let justifyGridContent = x =>
-  p("justifyContent", x->Grid.TrackAlignment.toString);
-
 let gridArea = (x: string) => p("gridArea", x);
 let gridTemplateAreas = x =>
   p("gridTemplateAreas", x->Grid.TemplateAreas.toString);
 
 let gridAutoFlow = x => p("gridAutoFlow", x->Grid.AutoFlow.toString);
+
+let alignSelf = x => p("alignSelf", x->AlignSelf.toString);
+let alignItems = x => p("alignItems", x->AlignItems.toString);
+let alignContent = x => p("alignContent", x->AlignContent.toString);
+let justifySelf = x => p("justifySelf", x->JustifySelf.toString);
+let justifyItems = x => p("justifyItems", x->JustifyItems.toString);
+let justifyContent = x => p("justifyContent", x->JustifyContent.toString);
 
 let zIndex = (x: int) => p("zIndex", {j|$x|j});
 
