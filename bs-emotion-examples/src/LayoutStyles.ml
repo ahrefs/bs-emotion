@@ -8,14 +8,14 @@ let container = [%css [
 
 let main = [%css [
   display `grid;
-  alignGridItems `center;
-  justifyGridItems `center;
+  alignItems `center;
+  justifyItems `center;
 ]]
 
 let footer = [%css [
   display `grid;
-  alignGridItems `center;
-  justifyGridItems `center;
+  alignItems `center;
+  justifyItems `center;
   padding (`px 20);
   backgroundColor (`hex "f7f7f7");
 ]]

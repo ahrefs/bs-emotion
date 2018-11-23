@@ -4,8 +4,7 @@
   "bs-dependencies": [
     "reason-react",
     "re-classnames",
-    "bs-emotion",
-    "bs-emotion-ppx"
+    "bs-emotion"
   ],
   "reason": { "react-jsx": 2 },
   "refmt": 3,
