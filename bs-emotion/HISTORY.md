@@ -1,5 +1,8 @@
 # History
 
+## 0.1.0
+**[BREAKING]** Replace `alignFlex*`/`alignGrid*`, `justifyFlex*`/`justifyGrid*` with spec compliant `align*`/`justify*` properties.
+
 ## 0.0.9
 Fix `clipPath` ([#11](https://github.com/alexfedoseev/bs-emotion/pull/11) by **[@jsiebern](https://github.com/jsiebern)**)
 
