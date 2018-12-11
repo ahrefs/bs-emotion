@@ -28,7 +28,7 @@ jobs:
       vmImage: ubuntu-16.04
 
     steps:
-      -tempalte: bs-emotion/bundle.yml
+      - template: bs-emotion-ppx/bundle.yml
 
   - job: Linux_bs_emotion
     pool:
