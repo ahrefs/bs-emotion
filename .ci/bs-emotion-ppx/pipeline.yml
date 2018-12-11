@@ -10,9 +10,9 @@ jobs:
       demands: npm
 
     steps:
-      - template: bs-emotion-ppx/install.yml
-      - template: bs-emotion-ppx/build.yml
-      - template: bs-emotion-ppx/test.yml
-      - template: bs-emotion-ppx/publish.yml
+      - template: install.yml
+      - template: build.yml
+      - template: test.yml
+      - template: publish.yml
         parameters:
           platform: ${{ parameters.platform }}
