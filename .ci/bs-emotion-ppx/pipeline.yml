@@ -1,5 +1,5 @@
 parameters:
-  name: "macOS bs-emotion-ppx"
+  name: "macOS_bs_emotion_ppx"
   vmImage: "macOS-10.13"
   platform: "macOS"
 

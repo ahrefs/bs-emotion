@@ -6,23 +6,23 @@ trigger:
 jobs:
   - template: bs-emotion-ppx/pipeline.yml # Template reference
     parameters:
-      name: "Windows bs-emotion-ppx"
+      name: "Windows_bs_emotion_ppx"
       vmImage: "vs2017-win2016"
       platform: "Windows"
 
   - template: bs-emotion-ppx/pipeline.yml # Template reference
     parameters:
-      name: "macOS bs-emotion-ppx"
+      name: "macOS_bs_emotion_ppx"
       vmImage: "macOS-10.13"
       platform: "macOS"
 
   - template: bs-emotion-ppx/pipeline.yml # Template reference
     parameters:
-      name: "Linux bs-emotion-ppx"
+      name: "Linux_bs_emotion_ppx"
       vmImage: "ubuntu-16.04"
       platform: "Linux"
 
-  - job: Linux bs-emotion
+  - job: Linux_bs_emotion
     pool:
       vmImage: ubuntu-16.04
 
