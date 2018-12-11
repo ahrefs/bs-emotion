@@ -13,7 +13,7 @@ steps:
   - script: "mkdir _release/platform-linux"
     displayName: "Create _release/platform-linux"
 
-  - script: "mv -r _release/Linux/emotionppx.native _release/platform-linux/emotionppx.native"
+  - script: "mv _release/Linux/emotionppx.native _release/platform-linux/emotionppx.native"
     displayName: "mv Linux"
 
   - task: DownloadBuildArtifacts@0
@@ -25,7 +25,7 @@ steps:
   - script: "mkdir _release/platform-darwin"
     displayName: "Create _release/platform-darwin"
 
-  - script: "mv -r _release/macOS/emotionppx.native _release/platform-darwin/emotionppx.native"
+  - script: "mv _release/macOS/emotionppx.native _release/platform-darwin/emotionppx.native"
     displayName: "mv macOS"
 
   - task: DownloadBuildArtifacts@0
@@ -37,7 +37,7 @@ steps:
   - script: "mkdir _release/platform-windows-x64"
     displayName: "Create _release/platform-windows"
 
-  - script: "mv -r _release/Windows/emotionppx.native.exe _release/platform-windows/emotionppx.native.exe"
+  - script: "mv _release/Windows/emotionppx.native.exe _release/platform-windows/emotionppx.native.exe"
     displayName: "mv Windows"
 
   - script: |
