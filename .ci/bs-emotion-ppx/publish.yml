@@ -1,0 +1,8 @@
+steps:
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish ${{ parameters.platform }}"
+    inputs:
+      pathToPublish: "$(Build.SourcesDirectory)/bs-emotion-ppx/lib/bs/native"
+      artifactName: "${{ parameters.platform }}-ppx"
+      parallel: true
+      parallelCount: 8

@@ -1,0 +1,3 @@
+steps:
+  - script: npm run build
+    workingDirectory: "${Build.SourcesDirectory}/bs-emotion"

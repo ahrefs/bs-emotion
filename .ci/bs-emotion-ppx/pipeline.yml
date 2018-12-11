@@ -1,0 +1,12 @@
+- job: ${{ parameters.name }}
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+      demands: npm
+
+    steps:
+      - template: bs-emotion-ppx/install.yml
+      - template: bs-emotion-ppx/build.yml
+      - template: bs-emotion-ppx/test.yml
+      - template: bs-emotion-ppx/publish.yml
+        parameters:
+          platform: ${{ parameters.platform }}

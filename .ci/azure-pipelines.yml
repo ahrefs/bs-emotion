@@ -1,0 +1,33 @@
+name: bs-emotion CI ${Build.BuildId}
+
+trigger:
+  - refs/tags/master
+
+jobs:
+  - template: bs-emotion-ppx/pipeline.yml # Template reference
+    parameters:
+      name: "Windows bs-emotion-ppx"
+      vmImage: "vs2017-win2016"
+      platform: "Windows"
+
+  - template: bs-emotion-ppx/pipeline.yml # Template reference
+    parameters:
+      name: "macOS bs-emotion-ppx"
+      vmImage: "macOS-10.13"
+      platform: "macOS"
+
+  - template: bs-emotion-ppx/pipeline.yml # Template reference
+    parameters:
+      name: "Linux bs-emotion-ppx"
+      vmImage: "ubuntu-16.04"
+      platform: "Linux"
+
+  - job: Linux bs-emotion
+    pool:
+      vmImage: ubuntu-16.04
+
+    steps:
+      - template: bs-emotion/install.yml
+      - template: bs-emotion/build.yml
+      - template: bs-emotion/test.yml
+      - template: bs-emotion/publish.yml
