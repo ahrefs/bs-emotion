@@ -32,12 +32,13 @@ jobs:
       - Windows_bs_emotion_ppx
     steps:
       - template: bs-emotion-ppx/bundle.yml
-
-  - job: Linux_bs_emotion
-    pool:
-      vmImage: ubuntu-16.04
-    steps:
-      - template: bs-emotion/install.yml
-      - template: bs-emotion/build.yml
-      - template: bs-emotion/test.yml
-      - template: bs-emotion/publish.yml
+  #
+  # Removed for now as we don't need to do anything fancy here
+  # - job: Linux_bs_emotion
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   steps:
+  #     - template: bs-emotion/install.yml
+  #     - template: bs-emotion/build.yml
+  #     - template: bs-emotion/test.yml
+  #     - template: bs-emotion/publish.yml
