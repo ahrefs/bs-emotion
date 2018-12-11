@@ -1,12 +1,12 @@
 steps:
-  - script: rm -rf node_modules
+  - script: npm pack
     workingDirectory: "bs-emotion"
-    displayName: "Remove node_modules"
+    displayName: "npm pack"
 
   - task: PublishBuildArtifacts@1
-    displayName: "Publish ${{ parameters.platform }}"
+    displayName: "Publish bs-emotion"
     inputs:
-      pathToPublish: "bs-emotion"
-      artifactName: "${{ parameters.platform }}-ppx"
+      pathToPublish: "bs-emotion/bs-emotion*.tgz"
+      artifactName: "bs-emotion"
       parallel: true
       parallelCount: 8
