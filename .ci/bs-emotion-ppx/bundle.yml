@@ -41,9 +41,9 @@ steps:
     displayName: "mv Windows"
 
   - script: |
-    cp .ci/bs-emotion-ppx/postinstall.js _release/postinstall.js
-    cp bs-emotion-ppx/package.json _release/package.json
-    cp bs-emotion-ppx/bsconfig.json _release/bsconfig.json
+      cp .ci/bs-emotion-ppx/postinstall.js _release/postinstall.js
+      cp bs-emotion-ppx/package.json _release/package.json
+      cp bs-emotion-ppx/bsconfig.json _release/bsconfig.json
 
   - script: "npm pack"
     displayName: "npm pack"
