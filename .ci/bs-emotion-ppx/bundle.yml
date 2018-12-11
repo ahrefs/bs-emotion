@@ -53,5 +53,5 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: Release"
     inputs:
-      PathtoPublish: "_release/*.tgz"
+      PathtoPublish: "_release"
       ArtifactName: Release
