@@ -16,8 +16,8 @@
     "postinstall": "bsb -make-world -backend native && cp lib/bs/native/emotionppx.native ppx"
   },
   "files": [
-    "src",
-    "test",
+    "platform-*",
+    "postinstall.js",
     "bsconfig.json"
   ],
   "dependencies": {

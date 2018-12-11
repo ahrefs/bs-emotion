@@ -2,6 +2,7 @@ parameters:
   name: "macOS_bs_emotion_ppx"
   vmImage: "macOS-10.13"
   platform: "macOS"
+  fileEnding: ""
 
 jobs:
   - job: ${{ parameters.name }}
@@ -16,3 +17,4 @@ jobs:
       - template: publish.yml
         parameters:
           platform: ${{ parameters.platform }}
+          fileEnding: ${{ parameters.fileEnding }}

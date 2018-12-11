@@ -1,4 +1,4 @@
-name: bs-emotion CI ${Build.BuildId}
+name: bs-emotion CI
 
 trigger:
   - refs/tags/master
@@ -9,6 +9,7 @@ jobs:
       name: "Windows_bs_emotion_ppx"
       vmImage: "vs2017-win2016"
       platform: "Windows"
+      fileEnding: ".exe"
 
   - template: bs-emotion-ppx/pipeline.yml # Template reference
     parameters:
@@ -21,6 +22,13 @@ jobs:
       name: "Linux_bs_emotion_ppx"
       vmImage: "ubuntu-16.04"
       platform: "Linux"
+
+  - job: Bundle_bs_emotion_ppx
+    pool:
+      vmImage: ubuntu-16.04
+
+    steps:
+      -tempalte: bs-emotion/bundle.yml
 
   - job: Linux_bs_emotion
     pool:

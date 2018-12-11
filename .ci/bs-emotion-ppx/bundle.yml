@@ -1,0 +1,56 @@
+steps:
+  - task: NodeTool@0
+    displayName: "Use Node 8.x"
+    inputs:
+      versionSpec: 8.x
+
+  - task: DownloadBuildArtifacts@0
+    displayName: "Download Linux Artifacts"
+    inputs:
+      artifactName: Linux
+      downloadPath: "_release"
+
+  - script: "mkdir _release/platform-linux"
+    displayName: "Create _release/platform-linux"
+
+  - script: "mv -r _release/Linux/ _release/platform-linux"
+    displayName: "mv Linux"
+
+  - task: DownloadBuildArtifacts@0
+    displayName: "Download macOS Artifacts"
+    inputs:
+      artifactName: macOS
+      downloadPath: "_release"
+
+  - script: "mkdir _release/platform-darwin"
+    displayName: "Create _release/platform-darwin"
+
+  - script: "mv -r _release/macOS/ _release/platform-darwin"
+    displayName: "mv macOS"
+
+  - task: DownloadBuildArtifacts@0
+    displayName: "Download macOS Artifacts"
+    inputs:
+      artifactName: Windows
+      downloadPath: "_release"
+
+  - script: "mkdir _release/platform-windows-x64"
+    displayName: "Create _release/platform-windows"
+
+  - script: "mv -r _release/Windows/ _release/platform-windows"
+    displayName: "mv Windows"
+
+  - script: |
+    cp .ci/bs-emotion-ppx/postinstall.js _release/postinstall.js
+    cp bs-emotion-ppx/package.json _release/package.json
+    cp bs-emotion-ppx/bsconfig.json _release/bsconfig.json
+
+  - script: "npm pack"
+    displayName: "npm pack"
+    workingDirectory: "_release"
+
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish Artifact: Release"
+    inputs:
+      PathtoPublish: "_release/*.tgz"
+      ArtifactName: Release
