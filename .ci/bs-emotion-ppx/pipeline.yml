@@ -1,4 +1,10 @@
-- job: ${{ parameters.name }}
+parameters:
+  name: "macOS bs-emotion-ppx"
+  vmImage: "macOS-10.13"
+  platform: "macOS"
+
+jobs:
+  - job: ${{ parameters.name }}
     pool:
       vmImage: ${{ parameters.vmImage }}
       demands: npm
