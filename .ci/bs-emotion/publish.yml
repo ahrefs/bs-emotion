@@ -1,4 +1,7 @@
 steps:
+  - script: rm -rf node_modules
+    displayName: "Remove node_modules"
+
   - task: PublishBuildArtifacts@1
     displayName: "Publish ${{ parameters.platform }}"
     inputs:
