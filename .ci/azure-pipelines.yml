@@ -26,14 +26,16 @@ jobs:
   - job: Bundle_bs_emotion_ppx
     pool:
       vmImage: ubuntu-16.04
-
+    dependsOn:
+      - Linux_bs_emotion_ppx
+      - macOS_bs_emotion_ppx
+      - Windows_bs_emotion_ppx
     steps:
       - template: bs-emotion-ppx/bundle.yml
 
   - job: Linux_bs_emotion
     pool:
       vmImage: ubuntu-16.04
-
     steps:
       - template: bs-emotion/install.yml
       - template: bs-emotion/build.yml

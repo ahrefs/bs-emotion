@@ -6,3 +6,4 @@ steps:
 
   - script: npm install
     workingDirectory: "bs-emotion"
+    displayName: "npm install"

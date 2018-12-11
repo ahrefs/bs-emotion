@@ -1,3 +1,4 @@
 steps:
   - script: npm run test
     workingDirectory: "bs-emotion-ppx"
+    displayName: "npm run test"
