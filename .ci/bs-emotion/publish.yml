@@ -1,5 +1,6 @@
 steps:
   - script: rm -rf node_modules
+    workingDirectory: "bs-emotion"
     displayName: "Remove node_modules"
 
   - task: PublishBuildArtifacts@1
