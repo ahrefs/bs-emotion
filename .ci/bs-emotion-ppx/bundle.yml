@@ -29,15 +29,15 @@ steps:
     displayName: "mv macOS"
 
   - task: DownloadBuildArtifacts@0
-    displayName: "Download macOS Artifacts"
+    displayName: "Download Windows Artifacts"
     inputs:
       artifactName: Windows
       downloadPath: "_release"
 
   - script: "mkdir _release/platform-windows-x64"
-    displayName: "Create _release/platform-windows"
+    displayName: "Create _release/platform-windows-x64"
 
-  - script: "mv _release/Windows/emotionppx.native.exe _release/platform-windows/emotionppx.native.exe"
+  - script: "mv _release/Windows/emotionppx.native.exe _release/platform-windows-x64/emotionppx.native.exe"
     displayName: "mv Windows"
 
   - script: |
