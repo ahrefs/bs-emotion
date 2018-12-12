@@ -1,0 +1,20 @@
+parameters:
+  name: "macOS_bs_emotion_ppx"
+  vmImage: "macOS-10.13"
+  platform: "macOS"
+  fileEnding: ""
+
+jobs:
+  - job: ${{ parameters.name }}
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+      demands: npm
+
+    steps:
+      - template: install.yml
+      - template: build.yml
+      - template: test.yml
+      - template: publish.yml
+        parameters:
+          platform: ${{ parameters.platform }}
+          fileEnding: ${{ parameters.fileEnding }}

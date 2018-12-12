@@ -1,0 +1,4 @@
+steps:
+  - script: npm run test
+    workingDirectory: "bs-emotion"
+    displayName: "npm test"

@@ -1,0 +1,12 @@
+steps:
+  - script: npm pack
+    workingDirectory: "bs-emotion"
+    displayName: "npm pack"
+
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish bs-emotion"
+    inputs:
+      pathToPublish: "bs-emotion/bs-emotion*.tgz"
+      artifactName: "bs-emotion"
+      parallel: true
+      parallelCount: 8

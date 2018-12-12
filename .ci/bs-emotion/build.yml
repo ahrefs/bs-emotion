@@ -1,0 +1,4 @@
+steps:
+  - script: npm run build
+    workingDirectory: "bs-emotion"
+    displayName: "npm run build"
