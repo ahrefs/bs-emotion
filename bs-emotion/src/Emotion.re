@@ -450,10 +450,7 @@ let gridAutoColumns = x => p("gridAutoColumns", x->Grid.AutoColumns.toString);
 
 let gridRowStart = x => p("gridRowStart", x->Grid.Line.toString);
 let gridRowEnd = x => p("gridRowEnd", x->Grid.Line.toString);
-let gridColumnStart = x => {
-  Js.log(p("gridColumnStart", x->Grid.Line.toString));
-  p("gridColumnStart", x->Grid.Line.toString);
-};
+let gridColumnStart = x => p("gridColumnStart", x->Grid.Line.toString);
 let gridColumnEnd = x => p("gridColumnEnd", x->Grid.Line.toString);
 
 let gridGap = x => p("gridGap", x->LengthPercentage.toString);
