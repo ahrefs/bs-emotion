@@ -11,6 +11,39 @@ module Css: {
     let opToString: op => string;
     let numToString: n => string;
   };
+
+  module ColumnWidth: {
+    type t = [
+      | `ch(float)
+      | `cm(float)
+      | `em(float)
+      | `ex(float)
+      | `inch(float)
+      | `mm(float)
+      | `pc(float)
+      | `pt(float)
+      | `px(int)
+      | `q(float)
+      | `rem(float)
+      | `vh(float)
+      | `vmax(float)
+      | `vmin(float)
+      | `vw(float)
+      | `auto
+    ];
+    let toString: t => string;
+  };
+
+  module ColumnCount: {
+    type t =  [| `auto | int ];
+    let toString: t => string;
+  };
+
+  module Columns: {
+    type t = list((ColumnWidth.t, ColumnCount.t));
+    let toString: t => string;
+  };
+
   module LengthUnit: {
     type t = [
       | `ch(float)
@@ -2065,6 +2098,9 @@ let boxShadows:
     ),
   ) =>
   declaration;
+let columns: Css.Columns.t => declaration;
+let columnWidth: Css.ColumnWidth.t => declaration;
+let columnCount: Css.ColumnCount.t => declaration;
 let clipPath: Css.ClipPath.t => declaration;
 let visibility: Css.Visibility.t => declaration;
 let backfaceVisibility: Css.Visibility.t => declaration;
