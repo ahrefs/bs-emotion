@@ -2,7 +2,7 @@
 
 ## 0.1.2
 Move to `@ahrefs/bs-emotion`.
-Remove trailing log ([#17](https://github.com/ahrefs/bs-emotion/pull/17 by **[@believer](https://github.com/believer)**)).
+Remove trailing log ([#17](https://github.com/ahrefs/bs-emotion/pull/17) by **[@believer](https://github.com/believer)**)).
 
 ## 0.1.1
 Re-publish `0.1.0` with `README.md`.

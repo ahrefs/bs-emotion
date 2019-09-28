@@ -13,7 +13,7 @@
     "build": "bsb -make-world -backend native",
     "test": "bsb -make-world -backend js",
     "clean": "bsb -clean-world",
-    "postinstall": "node ./postinstall.js"
+    "postinstall": "bsb -make-world -backend native && cp lib/bs/native/emotionppx.native ppx"
   },
   "files": [
     "platform-*",
