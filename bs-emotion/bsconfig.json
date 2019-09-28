@@ -1,5 +1,5 @@
 {
-  "name": "bs-emotion",
+  "name": "@ahrefs/bs-emotion",
   "sources": ["src"],
   "bs-dependencies": [
     "@minima.app/re-css"

@@ -1,5 +1,9 @@
 # History
 
+## 0.1.2
+Move to `@ahrefs/bs-emotion`.
+Remove trailing log ([#17](https://github.com/ahrefs/bs-emotion/pull/17 by **[@believer](https://github.com/believer)**)).
+
 ## 0.1.1
 Re-publish `0.1.0` with `README.md`.
 
@@ -7,7 +11,7 @@ Re-publish `0.1.0` with `README.md`.
 **[BREAKING]** Replace `alignFlex*`/`alignGrid*`, `justifyFlex*`/`justifyGrid*` with spec compliant `align*`/`justify*` properties.
 
 ## 0.0.9
-Fix `clipPath` ([#11](https://github.com/alexfedoseev/bs-emotion/pull/11) by **[@jsiebern](https://github.com/jsiebern)**)
+Fix `clipPath` ([#11](https://github.com/ahrefs/bs-emotion/pull/11) by **[@jsiebern](https://github.com/jsiebern)**)
 
 ## 0.0.8
 Update `re-css`.
@@ -16,10 +20,10 @@ Update `re-css`.
 Include [`re-css`](https://github.com/minima-app/re-css) in package. All `Css` types and functions are available under `Emotion.Css` namespace. Please, drop direct `re-css` dependency from your projects.
 
 ## 0.0.6
-Fix `backgroundPosition` ([#5](https://github.com/alexfedoseev/bs-emotion/pull/5) by **[@jsiebern](https://github.com/jsiebern)**)
+Fix `backgroundPosition` ([#5](https://github.com/ahrefs/bs-emotion/pull/5) by **[@jsiebern](https://github.com/jsiebern)**)
 
 ## 0.0.5
-Add `important` ([#4](https://github.com/alexfedoseev/bs-emotion/pull/4) by **[@jsiebern](https://github.com/jsiebern)**)
+Add `important` ([#4](https://github.com/ahrefs/bs-emotion/pull/4) by **[@jsiebern](https://github.com/jsiebern)**)
 
 ## 0.0.4
 Update `re-css`: simplify `Calc.n` type to one variant: `` `n(float) ``.

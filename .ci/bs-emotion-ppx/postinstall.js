@@ -160,5 +160,3 @@ switch (platform) {
     console.warn("error: no release built for the " + platform + " platform");
     process.exit(1);
 }
-
-require("./esyInstallRelease");
