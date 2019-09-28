@@ -221,5 +221,9 @@ Oftentimes, UI abstractions accept `className` prop to extend or override defaul
 <div className={Cx.merge([|Css.foo, className|])} />
 ```
 
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
 ## Thanks
 - [`glennsl/bs-typed-css-core`](https://github.com/glennsl/bs-typed-css-core) and [`SentiaAnalytics/bs-css`](https://github.com/SentiaAnalytics/bs-css) for examples and inspiration.
