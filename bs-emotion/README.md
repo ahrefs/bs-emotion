@@ -7,16 +7,16 @@ Get the package:
 
 ```shell
 # yarn
-yarn add bs-emotion
+yarn add @ahrefs/bs-emotion
 # or npm
-npm install --save bs-emotion
+npm install --save @ahrefs/bs-emotion
 ```
 
 Then add it to `bsconfig.json`:
 
 ```json
 "bs-dependencies": [
-  "bs-emotion"
+  "@ahrefs/bs-emotion"
 ]
 ```
 
@@ -25,15 +25,15 @@ If you want to auto-label generated classnames for easier debugging, you can ins
 
 ```shell
 # yarn
-yarn add --dev bs-emotion-ppx
+yarn add --dev @ahrefs/bs-emotion-ppx
 # or npm
-npm install --save-dev bs-emotion-ppx
+npm install --save-dev @ahrefs/bs-emotion-ppx
 ```
 
 Then add it to `bsconfig.json`:
 
 ```json
-"ppx-flags": ["bs-emotion-ppx/ppx"]
+"ppx-flags": ["@ahrefs/bs-emotion-ppx/emotionppx.native"],
 ```
 
 ## Usage

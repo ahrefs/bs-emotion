@@ -1,5 +1,5 @@
 {
-  "name": "bs-emotion-ppx",
+  "name": "@ahrefs/bs-emotion-ppx",
   "sources": [
     {
       "dir": "src",

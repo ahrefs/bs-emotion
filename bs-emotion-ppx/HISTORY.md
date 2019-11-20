@@ -1,5 +1,9 @@
 # History
 
+## 0.0.7
+
+Move bsb-native to devDependencies. Add Azure and multiplatform builds ([#15](https://github.com/ahrefs/bs-emotion/pull/15) by **[@ulrikstrid](https://github.com/ulrikstrid)**).
+
 ## 0.0.6
 Fix `package.json`.
 

@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexfedoseev/bs-emotion.git"
+    "url": "https://github.com/ahrefs/bs-emotion.git"
   },
   "scripts": {
     "start": "parcel src/index.html",
@@ -19,9 +19,9 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "bs-emotion": "0.1.1",
-    "bs-emotion-ppx": "0.0.6",
-    "bs-platform": "4.0.7",
+    "@ahrefs/bs-emotion": "0.1.2",
+    "@ahrefs/bs-emotion-ppx": "0.0.7",
+    "bs-platform": "^5.0.3",
     "parcel-bundler": "1.10.3",
     "re-classnames": "3.0.0",
     "reason-react": "0.5.3"

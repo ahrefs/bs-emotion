@@ -1,12 +1,12 @@
 {
-  "name": "bs-emotion",
-  "version": "0.1.1",
+  "name": "@ahrefs/bs-emotion",
+  "version": "0.1.2",
   "description": "BuckleScript bindings to Emotion",
   "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexfedoseev/bs-emotion.git"
+    "url": "https://github.com/ahrefs/bs-emotion.git"
   },
   "main": "src/Emotion.re",
   "scripts": {
@@ -19,14 +19,14 @@
     "bsconfig.json"
   ],
   "peerDependencies": {
-    "bs-platform": "^4.0.5"
+    "bs-platform": "^5.0.3"
   },
   "dependencies": {
     "@minima.app/re-css": "0.1.0",
     "emotion": "9.2.12"
   },
   "devDependencies": {
-    "bs-platform": "4.0.7"
+    "bs-platform": "5.0.3"
   },
   "keywords": [
     "css",
