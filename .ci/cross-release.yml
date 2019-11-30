@@ -2,7 +2,6 @@ steps:
   - template: utils/use-node.yml
 
   - script: "mkdir _release"
-    workingDirectory: "bs-emotion-ppx"
     displayName: "Create _release dir"
 
   - template: release-platform-setup.yml
@@ -21,13 +20,12 @@ steps:
       folder: "platform-windows-x64"
 
   - script: "node .ci/pipelines-release.js"
-    workingDirectory: "bs-emotion-ppx"
     displayName: "node .ci/pipelines-release.js"
     continueOnError: true
 
   - script: "npm pack ."
     displayName: "npm pack"
-    workingDirectory: "bs-emotion-ppx/_release"
+    workingDirectory: "_release"
 
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: Release"

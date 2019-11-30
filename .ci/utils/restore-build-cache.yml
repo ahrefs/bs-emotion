@@ -2,7 +2,6 @@
 
 steps:
   - bash: 'mkdir -p $(Build.StagingDirectory)'
-    workingDirectory: "bs-emotion-ppx"
     condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
     displayName: '[Cache][Publish] Create cache directory'
 
@@ -57,7 +56,7 @@ steps:
             if [[ -d ${ART_NAME}/_export ]]; then
               echo "Cached builds to import from ${ART_NAME}/_export in next CI step"
               ls ${ART_NAME}/_export
-              mv ${ART_NAME}/_export ${PROJECT_DIR}/_export
+              mv ${ART_NAME}/_export ${PROJECT_DIR}/bs-emotion-ppx/_export
             else
               echo "No _export directory to import from build cache"
               echo "Here's the contents of build cache:"
@@ -69,6 +68,7 @@ steps:
         downloadArtifactAndContinue
       
   - powershell: esy.cmd import-dependencies
+    workingDirectory: "bs-emotion-ppx"
     continueOnError: true
     condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
     displayName: "esy import-dependencies if windows (build cache from CI cache)"

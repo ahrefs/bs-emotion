@@ -5,8 +5,8 @@ console.log("Creating package.json");
 
 // From the project root pwd
 const mainPackageJsonPath =
-  fs.existsSync('esy.json') ?
-  'esy.json' : 'package.json';
+  fs.existsSync(path.join('bs-emotion-ppx', 'esy.json')) ?
+  path.join('bs-emotion-ppx', 'esy.json') : path.join('bs-emotion-ppx', 'package.json');
 
 const exists = fs.existsSync(mainPackageJsonPath);
 if (!exists) {
