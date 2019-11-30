@@ -81,5 +81,5 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact: ${{ parameters.platform }}"
         inputs:
-          PathtoPublish: "_release"
+          PathtoPublish: "bs-emotion-ppx/_release"
           ArtifactName: ${{ parameters.platform }}
