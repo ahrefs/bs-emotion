@@ -7,3 +7,4 @@ dist/
 *.bs.js
 
 bs-emotion-ppx/ppx
+_esy

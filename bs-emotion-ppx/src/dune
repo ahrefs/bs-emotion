@@ -1,0 +1,7 @@
+(library
+ (name EmotionPpx)
+ (public_name bs-emotion-ppx)
+ (libraries ocaml-migrate-parsetree compiler-libs.common)
+ (flags
+  (:standard -w -9))
+ (kind ppx_rewriter))
