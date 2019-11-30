@@ -1,3 +1,5 @@
+open Migrate_parsetree;
+open Ast_406;
 open Ast_mapper;
 open Ast_helper;
 open Asttypes;
@@ -16,7 +18,7 @@ let css = (className, contents) =>
     Exp.ident(lid("css")),
     [
       (
-        "",
+        Nolabel,
         Exp.construct(
           lid("::"),
           Some(
@@ -25,8 +27,8 @@ let css = (className, contents) =>
                 Exp.ident(lid("label")),
                 [
                   (
-                    "",
-                    Exp.constant(Asttypes.Const_string(className.txt, None)),
+                    Nolabel,
+                    Exp.constant(Pconst_string(className.txt, None)),
                   ),
                 ],
               ),
@@ -42,7 +44,7 @@ let css = (className, contents) =>
     ],
   );
 
-let cssMapper = _ => {
+let cssMapper = (_config, _cookies) => {
   ...default_mapper,
   structure_item: (mapper, item) =>
     switch (item.pstr_desc) {
@@ -307,4 +309,10 @@ let cssMapper = _ => {
     },
 };
 
-let () = Ast_mapper.register("bs-emotion-ppx", cssMapper);
+let () =
+  Migrate_parsetree.Driver.register(
+    ~name="bs-emotion-ppx",
+    ~args=[],
+    Migrate_parsetree.Versions.ocaml_406,
+    cssMapper,
+  );
