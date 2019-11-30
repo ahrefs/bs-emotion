@@ -15,8 +15,13 @@ var fs = require("fs");
 var os = require("os");
 var platform = process.platform;
 
-var binariesToCopy = [path.join("emotionppx.native")];
-var foldersToCopy = [];
+var packageJson = require("./package.json");
+var binariesToCopy = Object.keys(packageJson.bin)
+  .map(function(name) {
+    return packageJson.bin[name];
+  })
+  .concat(["esyInstallRelease.js"]);
+var foldersToCopy = ["bin", "_export"];
 
 function copyRecursive(srcDir, dstDir) {
   var results = [];
@@ -110,7 +115,14 @@ function arch() {
 // implementing it b/c we don't want to depend on fs.copyFileSync which appears
 // only in node@8.x
 function copyFileSync(sourcePath, destPath) {
-  var data = fs.readFileSync(sourcePath);
+  var data;
+  try {
+    data = fs.readFileSync(sourcePath);
+  } catch (e) {
+    console.log("Couldn't find " + sourcePath + " trying with .exe");
+    data = fs.readFileSync(sourcePath + ".exe");
+    sourcePath = sourcePath + ".exe";
+  }
   var stat = fs.statSync(sourcePath);
   fs.writeFileSync(destPath, data);
   fs.chmodSync(destPath, stat.mode);
@@ -160,3 +172,5 @@ switch (platform) {
     console.warn("error: no release built for the " + platform + " platform");
     process.exit(1);
 }
+
+require("./esyInstallRelease");

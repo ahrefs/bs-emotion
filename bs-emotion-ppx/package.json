@@ -8,21 +8,11 @@
     "type": "git",
     "url": "https://github.com/ahrefs/bs-emotion.git"
   },
-  "main": "./src/EmotionPpx.re",
-  "scripts": {
-    "build": "bsb -make-world -backend native",
-    "test": "bsb -make-world -backend js",
-    "clean": "bsb -clean-world",
-    "postinstall": "bsb -make-world -backend native && cp lib/bs/native/emotionppx.native ppx"
-  },
   "files": [
     "platform-*",
     "postinstall.js",
     "bsconfig.json"
   ],
-  "devDependencies": {
-    "bsb-native": "4.0.7000"
-  },
   "keywords": [
     "css",
     "css-in-js",
