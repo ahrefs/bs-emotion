@@ -26,9 +26,8 @@ steps:
     continueOnError: true
 
   - script: "npm pack ."
-    workingDirectory: "bs-emotion-ppx"
     displayName: "npm pack"
-    workingDirectory: "_release"
+    workingDirectory: "bs-emotion-ppx/_release"
 
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: Release"
