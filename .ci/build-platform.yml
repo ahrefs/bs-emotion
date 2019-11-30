@@ -65,13 +65,17 @@ jobs:
       - template: utils/use-node.yml
       - template: utils/use-esy.yml
       - script: "esy install"
+        workingDirectory: "bs-emotion-ppx"
         displayName: "esy install"
       - template: utils/restore-build-cache.yml
       - script: "esy build"
+        workingDirectory: "bs-emotion-ppx"
         displayName: "esy build"
       - script: "esy test"
+        workingDirectory: "bs-emotion-ppx"
         displayName: "Test command"
       - script: "esy release"
+        workingDirectory: "bs-emotion-ppx"
         displayName: "esy release"
       - template: utils/publish-build-cache.yml
       - task: PublishBuildArtifacts@1

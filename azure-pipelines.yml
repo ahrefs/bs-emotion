@@ -1,7 +1,9 @@
 name: Build bs-emotion-ppx release
 
 trigger:
-  - master
+  branches:
+    include:
+    - '*'
 
 jobs:
   - template: .ci/build-platform.yml
