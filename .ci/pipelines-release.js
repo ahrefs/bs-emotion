@@ -37,6 +37,7 @@ const packageJson = JSON.stringify(
     version: mainPackageJson.version,
     license: mainPackageJson.license,
     description: mainPackageJson.description,
+    keywords: mainPackageJson.keywords,
     repository: mainPackageJson.repository,
     scripts: {
       postinstall:
