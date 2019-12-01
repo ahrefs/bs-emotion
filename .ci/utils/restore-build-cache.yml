@@ -29,7 +29,7 @@ steps:
           echo "SYSTEM_PULLREQUEST_SOURCEBRANCH is: $SYSTEM_PULLREQUEST_SOURCEBRANCH"
           FILTER='deletedFilter=excludeDeleted&statusFilter=completed&resultFilter=succeeded'
           LATEST='queryOrder=finishTimeDescending&$top=1'
-          REST_BUILDS="$REST_BASE/$PROJ/_apis/build/builds?${FILTER}&${BRANCH}&${LATEST}&api-version=4.1"
+          REST_BUILDS="$REST_BASE$PROJ/_apis/build/builds?${FILTER}&${BRANCH}&${LATEST}&api-version=4.1"
           echo "Rest call for builds: $REST_BUILDS"
           REST_BUILDS_RESP=$(curl "$REST_BUILDS")
           if [[ $REST_BUILDS_RESP =~ (\"web\":\{\"href\":\")([^\"]*) ]]; then LATEST_BUILD_PAGE="${BASH_REMATCH[2]}"; else LATEST_BUILD_PAGE=""; fi
@@ -38,7 +38,7 @@ steps:
         }
         fetchLatestBuild
         fetchArtifactURL() {
-          REST_ART="$REST_BASE/$PROJ/_apis/build/builds/$LATEST_BUILD_ID/artifacts?artifactName=$ART_NAME&api-version=4.1"
+          REST_ART="$REST_BASE$PROJ/_apis/build/builds/$LATEST_BUILD_ID/artifacts?artifactName=$ART_NAME&api-version=4.1"
           echo "Rest call for artifacts: $REST_ART"
           if [[ $(curl $REST_ART) =~ (downloadUrl\":\")([^\"]*) ]]; then LATEST_ART_URL="${BASH_REMATCH[2]}"; else LATEST_ART_URL=""; fi
         }
