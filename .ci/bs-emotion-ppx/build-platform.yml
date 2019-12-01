@@ -21,10 +21,10 @@ jobs:
       - script: "yarn build"
         workingDirectory: "bs-emotion"
         displayName: "[bs-emotion] yarn build"
+      - template: ../utils/restore-build-cache.yml
       - script: "esy install"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy install"
-      - template: ../utils/restore-build-cache.yml
       - script: "esy build"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy build"
