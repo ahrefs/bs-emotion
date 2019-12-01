@@ -3,7 +3,7 @@ parameters:
   vmImage: "macOS-10.13"
 
 jobs:
-  - job: bs-emotion-ppx-linux
+  - job: ${{ parameters.platform }}
     displayName: Build bs-emotion-ppx (${{ parameters.platform }})
     pool:
       vmImage: ${{ parameters.vmImage }}
