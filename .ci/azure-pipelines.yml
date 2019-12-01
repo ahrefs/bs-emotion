@@ -1,4 +1,4 @@
-name: Build bs-emotion-ppx release
+name: Build bs-emotion + build & release bs-emotion-ppx
 
 trigger:
   branches:

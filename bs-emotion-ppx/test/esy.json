@@ -1,0 +1,10 @@
+{
+  "name": "bs-emotion-ppx-integration-test",
+  "version": "0.1.0",
+  "dependencies": {
+    "bs-emotion-ppx": "*"
+  },
+  "resolutions": {
+    "bs-emotion-ppx": "link:../"
+  }
+}

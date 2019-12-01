@@ -23,9 +23,9 @@ steps:
     displayName: "node .ci/bs-emotion-ppx/pipelines-release.js"
     continueOnError: true
 
-  - script: "npm pack ."
-    displayName: "npm pack"
-    workingDirectory: "_release"
+  # - script: "npm pack ."
+  #   displayName: "npm pack"
+  #   workingDirectory: "_release"
 
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: Release"

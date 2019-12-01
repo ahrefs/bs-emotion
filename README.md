@@ -1,5 +1,7 @@
 # bs-emotion
 
+[![Build Status](https://dev.azure.com/igor0048/ahrefs/_apis/build/status/ahrefs.bs-emotion?branchName=master)](https://dev.azure.com/igor0048/ahrefs/_build/latest?definitionId=1&branchName=master)
+
 BuckleScript bindings to [Emotion](https://emotion.sh).
 
 ## Installation
