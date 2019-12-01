@@ -3,7 +3,7 @@ parameters:
   vmImage: "macOS-10.13"
 
 jobs:
-  - job: bs-emotion
+  - job: bsemotion
     displayName: Build bs-emotion
     pool:
       vmImage: ${{ parameters.vmImage }}
