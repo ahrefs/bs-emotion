@@ -64,12 +64,6 @@ jobs:
         displayName: "Print environment"
       - template: utils/use-node.yml
       - template: utils/use-esy.yml
-      - script: "yarn install"
-        workingDirectory: "bs-emotion"
-        displayName: "[bs-emotion] yarn install"
-      - script: "yarn build"
-        workingDirectory: "bs-emotion"
-        displayName: "[bs-emotion] yarn build"
       - template: utils/restore-build-cache.yml
       - script: "esy install"
         workingDirectory: "bs-emotion-ppx"
@@ -83,10 +77,16 @@ jobs:
       #   displayName: "Test command"
       - script: "esy release"
         workingDirectory: "bs-emotion-ppx"
-        displayName: "esy release"
+        displayName: "[bs-emotion-ppx] esy release"
       - template: utils/publish-build-cache.yml
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact: ${{ parameters.platform }}"
         inputs:
           PathtoPublish: "bs-emotion-ppx/_release"
           ArtifactName: ${{ parameters.platform }}
+      - script: "yarn install"
+        workingDirectory: "bs-emotion"
+        displayName: "[bs-emotion] yarn install"
+      - script: "yarn build"
+        workingDirectory: "bs-emotion"
+        displayName: "[bs-emotion] yarn build"
