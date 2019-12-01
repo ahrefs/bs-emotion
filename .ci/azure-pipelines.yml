@@ -3,7 +3,12 @@ name: Build bs-emotion-ppx release
 trigger:
   branches:
     include:
-    - '*'
+      - master
+
+pr:
+  branches:
+    include:
+      - "*" # must quote since "*" is a YAML reserved character; we want a string
 
 jobs:
   - template: build-platform.yml
