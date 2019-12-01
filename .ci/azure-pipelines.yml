@@ -11,17 +11,23 @@ pr:
       - "*" # must quote since "*" is a YAML reserved character; we want a string
 
 jobs:
-  - template: build-bs-emotion.yml
+  - job: bs-emotion
+    displayName: Build bs-emotion
+    template: build-bs-emotion.yml
     parameters:
       platform: macOS
       vmImage: macOS-10.13
 
-  - template: bs-emotion-ppx/build-platform.yml
+  - job: bs-emotion-ppx-linux
+    displayName: Build bs-emotion-ppx (Linux)
+    template: bs-emotion-ppx/build-platform.yml
     parameters:
       platform: Linux
       vmImage: ubuntu-16.04
 
-  - template: bs-emotion-ppx/build-platform.yml
+  - job: bs-emotion-ppx-macos
+    displayName: Build bs-emotion-ppx (macOS)
+    template: bs-emotion-ppx/build-platform.yml
     parameters:
       platform: macOS
       vmImage: macOS-10.13
@@ -30,7 +36,9 @@ jobs:
   # which assumes you have bsdtar (tar.exe) in your system
   # otherwise it will end up using the esy-bash tar which doesn't
   # understand drives like D:/ (thinks it's an scp path).
-  - template: bs-emotion-ppx/build-platform.yml
+  - job: bs-emotion-ppx-windows
+    displayName: Build bs-emotion-ppx (Windows)
+    template: bs-emotion-ppx/build-platform.yml
     parameters:
       platform: Windows
       vmImage: windows-2019
