@@ -73,7 +73,7 @@ steps:
         fetchArtifactURL
         downloadArtifactAndContinue
       
-  - powershell: esy.cmd import-dependencies --verbosity=debug
+  - powershell: esy.cmd import-dependencies
     workingDirectory: "bs-emotion-ppx"
     continueOnError: true
     # condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
