@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@ahrefs/bs-emotion": "0.1.2",
-    "@ahrefs/bs-emotion-ppx": "0.0.7",
+    "@ahrefs/bs-emotion-ppx": "1.0.0",
     "bs-platform": "^5.0.3",
     "parcel-bundler": "1.10.3",
     "re-classnames": "3.0.0",
