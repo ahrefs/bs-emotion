@@ -2,13 +2,13 @@
 
 steps:
   - bash: 'mkdir -p $(Build.StagingDirectory)'
-    # condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
+    condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
     displayName: '[Cache][Publish] Create cache directory'
 
   # TODO: This can be done in parallel with installing node, and esy
   # (which would save a bunch of time on windows)
   - task: Bash@3
-    # condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
+    condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
     displayName: '[Cache][Restore] Restoring build cache using REST API'
     continueOnError: true
     inputs:
@@ -18,9 +18,6 @@ steps:
         REST_BASE="${SYSTEM_TEAMFOUNDATIONCOLLECTIONURI}"
         PROJ="$SYSTEM_TEAMPROJECT"
         ART_NAME="cache-${AGENT_OS}-install"
-        echo "REST_BASE is: $REST_BASE"
-        echo "PROJ is: $PROJ"
-        echo "ART_NAME is: $ART_NAME"
         fetchLatestBuild() {
           PREFIX="branchName=refs%2Fheads%2F"
           BRANCH=${PREFIX}${SYSTEM_PULLREQUEST_TARGETBRANCH}
@@ -73,23 +70,20 @@ steps:
   - powershell: esy.cmd import-dependencies
     workingDirectory: "bs-emotion-ppx"
     continueOnError: true
-    # condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
-    condition: eq(variables['AGENT.OS'], 'Windows_NT')
+    condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
     displayName: "esy import-dependencies if windows (build cache from CI cache)"
 
   - bash: esy import-dependencies
     workingDirectory: "bs-emotion-ppx"
     continueOnError: true
-    # condition: and(ne(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
-    condition: ne(variables['AGENT.OS'], 'Windows_NT')
+    condition: and(ne(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
     displayName: "esy import-dependencies if not windows (build cache from CI cache)"
     
   # Remove as soon as https://github.com/esy/esy/pull/969 is resolved.
   # For now, windows won't use build cache for problematic package.
   - task: Bash@3
     continueOnError: true
-    # condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
-    condition: eq(variables['AGENT.OS'], 'Windows_NT')
+    condition: and(eq(variables['AGENT.OS'], 'Windows_NT'), and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch']))))
     displayName: 'Remove ocamlfind prebuilts if on Windows'
     inputs:
       targetType: 'inline' # Optional. Options: filePath, inline
@@ -100,11 +94,11 @@ steps:
   - bash: 'rm -rf _import'
     workingDirectory: "bs-emotion-ppx"
     continueOnError: true
-    # condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
+    condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
     displayName: 'Remove import directory'
 
   - bash: 'rm -rf *'
     continueOnError: true
     workingDirectory: '$(Build.StagingDirectory)'
-    # condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
+    condition: and(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), ne(variables['Build.SourceBranch'], variables['System.PullRequest.TargetBranch'])))
     displayName: '[Cache][Restore] Clean up staging dir'
