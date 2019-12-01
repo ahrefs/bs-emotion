@@ -18,6 +18,9 @@ steps:
         REST_BASE="${SYSTEM_TEAMFOUNDATIONCOLLECTIONURI}"
         PROJ="$SYSTEM_TEAMPROJECT"
         ART_NAME="cache-${AGENT_OS}-install"
+        echo "REST_BASE is: $REST_BASE"
+        echo "PROJ is: $PROJ"
+        echo "ART_NAME is: $ART_NAME"
         fetchLatestBuild() {
           PREFIX="branchName=refs%2Fheads%2F"
           BRANCH=${PREFIX}${SYSTEM_PULLREQUEST_TARGETBRANCH}
