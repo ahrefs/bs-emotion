@@ -1,6 +1,6 @@
 {
   "checksum": "71d6b2d86bfcc889f5c89fcc276538f1",
-  "root": "@ahrefs/bs-emotion-ppx@link-dev:./package.json",
+  "root": "@ahrefs/bs-emotion-ppx@link-dev:./esy.json",
   "node": {
     "ocaml@4.6.1000@d41d8cd9": {
       "id": "ocaml@4.6.1000@d41d8cd9",
@@ -458,15 +458,11 @@
       "dependencies": [],
       "devDependencies": []
     },
-    "@ahrefs/bs-emotion-ppx@link-dev:./package.json": {
-      "id": "@ahrefs/bs-emotion-ppx@link-dev:./package.json",
+    "@ahrefs/bs-emotion-ppx@link-dev:./esy.json": {
+      "id": "@ahrefs/bs-emotion-ppx@link-dev:./esy.json",
       "name": "@ahrefs/bs-emotion-ppx",
-      "version": "link-dev:./package.json",
-      "source": {
-        "type": "link-dev",
-        "path": ".",
-        "manifest": "package.json"
-      },
+      "version": "link-dev:./esy.json",
+      "source": { "type": "link-dev", "path": ".", "manifest": "esy.json" },
       "overrides": [],
       "dependencies": [
         "ocaml@4.6.1000@d41d8cd9", "@opam/reason@opam:3.5.2@f689c2cb",
