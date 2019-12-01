@@ -14,7 +14,7 @@ if (!exists) {
   process.exit(1);
 }
 // Now require from this script's location.
-const mainPackageJson = require(path.join('..', mainPackageJsonPath));
+const mainPackageJson = require(path.join('..', '..', mainPackageJsonPath));
 const bins =
   Array.isArray(mainPackageJson.esy.release.bin) ?
   mainPackageJson.esy.release.bin.reduce(
@@ -61,7 +61,7 @@ const packageJson = JSON.stringify(
 );
 
 fs.writeFileSync(
-  path.join(__dirname, "..", "_release", "package.json"),
+  path.join(__dirname, "..", "..", "_release", "package.json"),
   packageJson,
   {
     encoding: "utf8"
@@ -71,8 +71,8 @@ fs.writeFileSync(
 try {
   console.log("Copying LICENSE");
   fs.copyFileSync(
-    path.join(__dirname, "..", "LICENSE"),
-    path.join(__dirname, "..", "_release", "LICENSE")
+    path.join(__dirname, "..", "..", "LICENSE"),
+    path.join(__dirname, "..", "..", "_release", "LICENSE")
   );
 } catch (e) {
   console.warn("No LICENSE found");
@@ -80,27 +80,28 @@ try {
 
 console.log("Copying README.md");
 fs.copyFileSync(
-  path.join(__dirname, "..", "README.md"),
-  path.join(__dirname, "..", "_release", "README.md")
+  path.join(__dirname, "..", "..", "README.md"),
+  path.join(__dirname, "..", "..", "_release", "README.md")
 );
 
 console.log("Copying postinstall.js");
 fs.copyFileSync(
   path.join(__dirname, "release-postinstall.js"),
-  path.join(__dirname, "..", "_release", "postinstall.js")
+  path.join(__dirname, "..", "..", "_release", "postinstall.js")
 );
 
 console.log("Creating placeholder files");
 const placeholderFile = `:; echo "You need to have postinstall enabled"; exit $?
 @ECHO OFF
 ECHO You need to have postinstall enabled`;
-fs.mkdirSync(path.join(__dirname, "..", "_release", "bin"));
+fs.mkdirSync(path.join(__dirname, "..", "..", "_release", "bin"));
 
 Object.keys(bins).forEach(
   name => {
     if(bins[name]) {
       const binPath = path.join(
         __dirname,
+        "..",
         "..",
         "_release",
         bins[name]

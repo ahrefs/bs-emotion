@@ -1,0 +1,17 @@
+parameters:
+  platform: "macOS"
+  vmImage: "macOS-10.13"
+
+jobs:
+  - job: ${{ parameters.platform }}
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+      demands: node.js
+    steps: 
+      - template: utils/use-node.yml
+      - script: "yarn install"
+        workingDirectory: "bs-emotion"
+        displayName: "yarn install"
+      - script: "yarn build"
+        workingDirectory: "bs-emotion"
+        displayName: "yarn build"

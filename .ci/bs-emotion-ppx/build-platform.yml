@@ -62,8 +62,8 @@ jobs:
       # displayName: "Print esy bin location"
       - bash: env
         displayName: "Print environment"
-      - template: utils/use-node.yml
-      - template: utils/use-esy.yml
+      - template: ../utils/use-node.yml
+      - template: ../utils/use-esy.yml
       - script: "yarn install"
         workingDirectory: "bs-emotion"
         displayName: "[bs-emotion] yarn install"
@@ -73,17 +73,17 @@ jobs:
       - script: "esy install"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy install"
-      - template: utils/restore-build-cache.yml
-      - script: "[bs-emotion-ppx] esy build"
+      - template: ../utils/restore-build-cache.yml
+      - script: "esy build"
         workingDirectory: "bs-emotion-ppx"
-        displayName: "esy build"
+        displayName: "[bs-emotion-ppx] esy build"
       # - script: "esy test"
       #   workingDirectory: "bs-emotion-ppx"
       #   displayName: "Test command"
       - script: "esy release"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy release"
-      - template: utils/publish-build-cache.yml
+      - template: ../utils/publish-build-cache.yml
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact: ${{ parameters.platform }}"
         inputs:
