@@ -79,15 +79,23 @@ jobs:
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy build"
       - script: "esy install"
+        # Skip integration for now on windows as there's an error "No working prebuilt buckleScript compiler"
+        condition: ne(variables['AGENT.OS'], 'Windows_NT')
         workingDirectory: "bs-emotion-ppx/test"
         displayName: "[bs-emotion-ppx/test] esy install"
       - script: "esy build"
+        # Skip integration for now on windows as there's an error "No working prebuilt buckleScript compiler"
+        condition: ne(variables['AGENT.OS'], 'Windows_NT')
         workingDirectory: "bs-emotion-ppx/test"
         displayName: "[bs-emotion-ppx/test] esy build"
       - script: "yarn install"
+        # Skip integration for now on windows as there's an error "No working prebuilt buckleScript compiler"
+        condition: ne(variables['AGENT.OS'], 'Windows_NT')
         workingDirectory: "bs-emotion-ppx/test"
         displayName: "[bs-emotion-ppx/test] yarn install"
       - script: "yarn build"
+        # Skip integration for now on windows as there's an error "No working prebuilt buckleScript compiler"
+        condition: ne(variables['AGENT.OS'], 'Windows_NT')
         workingDirectory: "bs-emotion-ppx/test"
         displayName: "[bs-emotion-ppx/test] yarn build"
       - script: "esy release"
