@@ -74,10 +74,20 @@ jobs:
       - script: "esy install"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy install"
-      - template: ../utils/restore-build-cache.yml
+      # - template: ../utils/restore-build-cache.yml
       - script: "esy build"
         workingDirectory: "bs-emotion-ppx"
         displayName: "[bs-emotion-ppx] esy build"
+      - script: "esy release"
+        workingDirectory: "bs-emotion-ppx"
+        displayName: "[bs-emotion-ppx] esy release"
+      - template: ../utils/publish-build-cache.yml
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact: ${{ parameters.platform }}"
+        inputs:
+          PathtoPublish: "bs-emotion-ppx/_release"
+          ArtifactName: ${{ parameters.platform }}
+      # All bs-emotion-ppx/test steps should go after publishing cache so that cache is not polluted
       - script: "esy install"
         # Skip integration for now on windows as there's an error "No working prebuilt buckleScript compiler"
         condition: ne(variables['AGENT.OS'], 'Windows_NT')
@@ -98,12 +108,3 @@ jobs:
         condition: ne(variables['AGENT.OS'], 'Windows_NT')
         workingDirectory: "bs-emotion-ppx/test"
         displayName: "[bs-emotion-ppx/test] yarn build"
-      - script: "esy release"
-        workingDirectory: "bs-emotion-ppx"
-        displayName: "[bs-emotion-ppx] esy release"
-      - template: ../utils/publish-build-cache.yml
-      - task: PublishBuildArtifacts@1
-        displayName: "Publish Artifact: ${{ parameters.platform }}"
-        inputs:
-          PathtoPublish: "bs-emotion-ppx/_release"
-          ArtifactName: ${{ parameters.platform }}
