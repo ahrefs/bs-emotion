@@ -23,10 +23,10 @@ steps:
         echo "ART_NAME is: $ART_NAME"
         fetchLatestBuild() {
           PREFIX="branchName=refs%2Fheads%2F"
-          BRANCH=${PREFIX}${SYSTEM_PULLREQUEST_TARGETBRANCH}
+          BRANCH=${PREFIX}${SYSTEM_PULLREQUEST_SOURCEBRANCH}
           echo "BRANCH is: $BRANCH"
           echo "PREFIX is: $PREFIX"
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH is: $SYSTEM_PULLREQUEST_TARGETBRANCH"
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH is: $SYSTEM_PULLREQUEST_SOURCEBRANCH"
           FILTER='deletedFilter=excludeDeleted&statusFilter=completed&resultFilter=succeeded'
           LATEST='queryOrder=finishTimeDescending&$top=1'
           REST_BUILDS="$REST_BASE/$PROJ/_apis/build/builds?${FILTER}&${BRANCH}&${LATEST}&api-version=4.1"
