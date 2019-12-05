@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ahrefs/bs-emotion-ppx@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-0.0.7.tgz#5c7248e9eb66a0b1b1e50d54c0d26738d3610406"
-  integrity sha512-YvQKQXiCLSZ7zaUzc46YYfW/vha+2lkIFqZxSyHEzt7RvHZ4eZMbpsj15aQDgxuSQ+/aVFkEwCYHr8wMibotwA==
+"@ahrefs/bs-emotion-ppx@1.0.0-dev.1":
+  version "1.0.0-dev.1"
+  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-1.0.0-dev.1.tgz#f67f0e4516284a7a9f9ff14d7e801e4ec2b4ccd6"
+  integrity sha512-5Iq16uodAB6CKaYLNWmTGG8zrMdvsb274GKLZWDLhO7VMTaQnwZmP5cluKUXwzfQQdQn5mXhgImuGY78TO4g+w==
 
 "@ahrefs/bs-emotion@0.1.2":
   version "0.1.2"
@@ -1086,10 +1086,10 @@ browserslist@^4.0.0, browserslist@^4.1.0:
     electron-to-chromium "^1.3.82"
     node-releases "^1.0.1"
 
-bs-platform@^5.0.3:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.6.tgz#88c13041fb020479800de3d82c680bf971091425"
-  integrity sha512-6Boa2VEcWJp2WJr38L7bp3J929nYha7gDarjxb070jWzgfPJ/WbzjipmSfnu2eqqk1MfjEIpBipbPz6n1NISwA==
+bs-platform@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.0.0.tgz#6d1b0dd0d53f16f5b7fb2656ccae58c71ec988dc"
+  integrity sha512-3cPwrt/1hGjXuGS2HfVyd6oc6p/YpDOQIoLiFLRgrrB7/bnDNvbJn4XhO1PUyuRL4e7fc24R3xvA08BFDHZ6Gw==
 
 buffer-equal@0.0.1:
   version "0.0.1"
@@ -2218,12 +2218,12 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 fsevents@^1.2.2:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426"
-  integrity sha512-z8H8/diyk76B7q5wg+Ud0+CqzcAF3mBBI/bA5ne5zrRUUIvNkJY//D3BqyH571KuAC4Nr7Rw7CjWX4r0y9DvNg==
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.9.tgz#3f5ed66583ccd6f400b5a00db6f7e861363e388f"
+  integrity sha512-oeyj2H3EjjonWcFjD5NvZNE9Rqe4UW+nQBU2HNeKw0koVLEFIhtyETyAakeAM3de7Z/SW5kcA+fZUait9EApnw==
   dependencies:
-    nan "^2.9.2"
-    node-pre-gyp "^0.10.0"
+    nan "^2.12.1"
+    node-pre-gyp "^0.12.0"
 
 fswatcher-child@^1.0.5:
   version "1.1.1"
@@ -3073,10 +3073,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-nan@^2.9.2:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
-  integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
+nan@^2.12.1:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
+  integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -3148,10 +3148,10 @@ node-libs-browser@^2.0.0:
     util "^0.10.3"
     vm-browserify "0.0.4"
 
-node-pre-gyp@^0.10.0:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.10.3.tgz#3070040716afdc778747b61b6887bf78880b80fc"
-  integrity sha512-d1xFs+C/IPS8Id0qPTZ4bUT8wWryfR/OzzAFxweG+uLN85oPzyo2Iw6bVlLQ/JOdgNonXLCoRyqDzDWq4iw72A==
+node-pre-gyp@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.12.0.tgz#39ba4bb1439da030295f899e3b520b7785766149"
+  integrity sha512-4KghwV8vH5k+g2ylT+sLTjy5wmUOb9vPhnM8NHvRf9dHmnW/CndrFXy2aRPaPST6dugXSdHXfeaHQm77PIz/1A==
   dependencies:
     detect-libc "^1.0.2"
     mkdirp "^0.5.1"
