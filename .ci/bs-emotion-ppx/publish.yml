@@ -1,8 +1,0 @@
-steps:
-  - task: PublishBuildArtifacts@1
-    displayName: "Publish ${{ parameters.platform }}"
-    inputs:
-      pathToPublish: "bs-emotion-ppx/lib/bs/native/emotionppx.native${{ parameters.fileEnding }}"
-      artifactName: "${{ parameters.platform }}"
-      parallel: true
-      parallelCount: 8

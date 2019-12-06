@@ -1,0 +1,6 @@
+(executable
+  (name BsEmotionPpx)
+  (public_name bs-emotion-ppx)
+  (libraries bs-emotion-ppx.lib)
+  (ocamlopt_flags ( -linkall ))
+)

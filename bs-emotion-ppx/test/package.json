@@ -1,0 +1,13 @@
+{
+  "name": "bs-emotion-ppx-integration-test",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "7.0.1"
+  }
+}

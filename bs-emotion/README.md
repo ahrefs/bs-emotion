@@ -1,6 +1,16 @@
 # bs-emotion
 
+[![Build Status](https://dev.azure.com/igor0048/ahrefs/_apis/build/status/ahrefs.bs-emotion?branchName=master)](https://dev.azure.com/igor0048/ahrefs/_build/latest?definitionId=1&branchName=master)
+
 BuckleScript bindings to [Emotion](https://emotion.sh).
+
+## BuckleScript v7+
+
+`bs-emotion` and `bs-emotion-ppx` are compatible with BuckleScript v7 starting from version 1.0.0.
+
+If you need to use them with BuckleScript v5 or below, install the earlier versions:
+- `@ahrefs/bs-emotion` version ^0.1.2
+- `@ahrefs/bs-emotion-ppx` version ^0.0.7
 
 ## Installation
 Get the package:
@@ -33,7 +43,7 @@ npm install --save-dev @ahrefs/bs-emotion-ppx
 Then add it to `bsconfig.json`:
 
 ```json
-"ppx-flags": ["@ahrefs/bs-emotion-ppx/emotionppx.native"],
+"ppx-flags": ["bs-emotion-ppx"],
 ```
 
 ## Usage
@@ -220,6 +230,10 @@ Oftentimes, UI abstractions accept `className` prop to extend or override defaul
 ```reason
 <div className={Cx.merge([|Css.foo, className|])} />
 ```
+
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## Thanks
 - [`glennsl/bs-typed-css-core`](https://github.com/glennsl/bs-typed-css-core) and [`SentiaAnalytics/bs-css`](https://github.com/SentiaAnalytics/bs-css) for examples and inspiration.

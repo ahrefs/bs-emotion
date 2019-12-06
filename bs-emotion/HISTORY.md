@@ -1,5 +1,10 @@
 # History
 
+
+## 1.0.0
+
+Noop. Sync version with `bs-emotion-ppx` for BuckleScript v7 to keep major versions consistent.
+
 ## 0.1.2
 Move to `@ahrefs/bs-emotion`.
 Remove trailing log ([#17](https://github.com/ahrefs/bs-emotion/pull/17) by **[@believer](https://github.com/believer)**)).
