@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-bs-platform@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.0.0.tgz#6d1b0dd0d53f16f5b7fb2656ccae58c71ec988dc"
-  integrity sha512-3cPwrt/1hGjXuGS2HfVyd6oc6p/YpDOQIoLiFLRgrrB7/bnDNvbJn4XhO1PUyuRL4e7fc24R3xvA08BFDHZ6Gw==
+bs-platform@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.0.1.tgz#1d7b0ef6088b998dceee5db74a7cd8f01c20a3bd"
+  integrity sha512-UjStdtHhbtC/l6vKJ1XRDqrPk7rFf5PLYHtRX3akDXEYVnTbN36z0g4DEr5mU8S0N945e33HYts9x+i7hKKpZQ==
