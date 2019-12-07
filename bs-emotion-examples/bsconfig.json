@@ -9,7 +9,7 @@
   "reason": { "react-jsx": 2 },
   "refmt": 3,
   "bsc-flags": ["-open Belt"],
-  "ppx-flags": ["bs-emotion-ppx"],
+  "ppx-flags": ["@ahrefs/bs-emotion-ppx/bin/bs-emotion-ppx"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true

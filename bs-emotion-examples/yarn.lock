@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@ahrefs/bs-emotion-ppx@1.0.0-dev.1":
-  version "1.0.0-dev.1"
-  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-1.0.0-dev.1.tgz#f67f0e4516284a7a9f9ff14d7e801e4ec2b4ccd6"
-  integrity sha512-5Iq16uodAB6CKaYLNWmTGG8zrMdvsb274GKLZWDLhO7VMTaQnwZmP5cluKUXwzfQQdQn5mXhgImuGY78TO4g+w==
+"@ahrefs/bs-emotion-ppx@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-1.0.0.tgz#e1b5469dc7bbc507508b9fa5cd53422f831ebf40"
+  integrity sha512-+vLZsrSvjWA5Jbc/Y9M7/SN65Vg9y1FNNImLbb10w4mEkBmpvc9+ZjWHsAn+tfI7f9oNg/oqk1sl450y4YC5gw==
 
-"@ahrefs/bs-emotion@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion/-/bs-emotion-0.1.2.tgz#ce9b61dbb9f7e2611beec5bde13834d0e4b0bfd4"
-  integrity sha512-w9/rpbYzlws0Bnpblpe39xg/YY1vjqzNNiZXkbcuDfjuCblDyjZbVrbTt4XwB4ni+1mCGWpheyoC0fuTjcR/nA==
+"@ahrefs/bs-emotion@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion/-/bs-emotion-1.0.0.tgz#1463f7c246ca0d65dbd45c854cca00ea72bda257"
+  integrity sha512-HfYhGMq63OjMNX70ZsFx2bQCh3SXspvBEYSyx0Bp536lL9g2y5GVoob03HAZrWkldGxTXNzAqZAkINSmMcAJtw==
   dependencies:
     "@minima.app/re-css" "0.1.0"
     emotion "9.2.12"
