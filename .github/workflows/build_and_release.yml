@@ -60,7 +60,7 @@ jobs:
           esy install 
           esy build
       - name: Retrieve bs-emotion-ppx binary path
-        id: bs-emotion-ppx-path
+        id: bs-emotion-ppx_path
         shell: bash
         run: |
           cd bs-emotion-ppx 
@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: ${{ steps.esy_binary_path.outputs.path }}
+          path: ${{ steps.bs-emotion-ppx_path.outputs.path }}
 
   publish:
     needs: test_and_build
