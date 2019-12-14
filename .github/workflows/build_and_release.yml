@@ -65,7 +65,7 @@ jobs:
         run: |
           cd bs-emotion-ppx 
           # from https://stackoverflow.com/a/24848739/617787
-          s=$(pwd); d=$(dirname $(esy x which bs-emotion-ppx));
+          s=$(pwd); d=$(dirname $(esy x which bs-emotion-ppx));          
           while [ "${d#$s/}" == "${d}" ]
           do s=$(dirname $s);b="../${b}"; done; 
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
@@ -74,7 +74,9 @@ jobs:
             ESY__BINARY_PATH=../bs-emotion-ppx/${b}${d#$s/}/bs-emotion-ppx
           fi
           echo "ESY__BINARY_PATH: $ESY__BINARY_PATH"
-          echo "##[set-output name=path;]$ESY__BINARY_PATH"
+          echo "Full path: $(esy x which bs-emotion-ppx)"
+          #echo "##[set-output name=path;]$ESY__BINARY_PATH"
+          echo "##[set-output name=path;]$(esy x which bs-emotion-ppx)"
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
