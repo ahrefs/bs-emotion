@@ -1,12 +1,15 @@
 name: build and release bs-emotion
 
-on:
+on:  
   push:
     tags:
       - v*
+    branches: 
+      - master
+        
   pull_request:
     branches:
-      - master
+      - master    
 
 jobs:
   test_and_build:
