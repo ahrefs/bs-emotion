@@ -71,7 +71,7 @@ jobs:
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
             ESY__BINARY_PATH=${b}${d#$s/}/bs-emotion-ppx.exe
           else
-            ESY__BINARY_PATH=${b}${d#$s/}/bs-emotion-ppx
+            ESY__BINARY_PATH=../bs-emotion-ppx/${b}${d#$s/}/bs-emotion-ppx
           fi
           echo "ESY__BINARY_PATH: $ESY__BINARY_PATH"
           echo "##[set-output name=path;]$ESY__BINARY_PATH"
