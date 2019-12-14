@@ -59,10 +59,11 @@ jobs:
           cd bs-emotion-ppx
           esy install 
           esy build
-      - name: Get esy binary path
-        id: esy_binary_path
+      - name: Retrieve bs-emotion-ppx binary path
+        id: bs-emotion-ppx-path
         shell: bash
         run: |
+          cd bs-emotion-ppx 
           # from https://stackoverflow.com/a/24848739/617787
           s=$(pwd); d=$(dirname $(esy x which bs-emotion-ppx));
           while [ "${d#$s/}" == "${d}" ]
@@ -74,8 +75,7 @@ jobs:
           fi
           echo "ESY__BINARY_PATH: $ESY__BINARY_PATH"
           echo "##[set-output name=path;]$ESY__BINARY_PATH"
-      - name: (only on release) Upload artifacts ${{ matrix.os }}
-        if: github.event_name != 'pull_request'
+      - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
