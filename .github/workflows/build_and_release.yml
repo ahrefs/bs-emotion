@@ -53,6 +53,7 @@ jobs:
             v1-esy-${{ matrix.os }}-
       - name: esy install and build
         run: |
+          cd ../bs-emotion-ppx
           esy install 
           esy build
       - name: Get esy binary path
