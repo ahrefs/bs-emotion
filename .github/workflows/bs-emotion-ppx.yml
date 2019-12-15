@@ -38,13 +38,13 @@ jobs:
             NPM_CACHE_PATH="$HOME/.npm"
           fi
           echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
-          echo "##[set-output name=dir;]$NPM_CACHE_PATH"
-      
-      - name: Restore yarn cache
-        uses: actions/cache@v1
+          echo "##[set-output name=dir;]$NPM_CACHE_PATH"       
+                
+      - name: Restore npm cache
+        uses: actions/cache@v1        
         with:
           path: ${{ steps.npm-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('${{ steps.npm-cache-path.outputs.dir }}/**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       
