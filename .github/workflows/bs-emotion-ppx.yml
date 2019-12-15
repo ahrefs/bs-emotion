@@ -26,30 +26,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          
-      - name: Get npm cache path
-        id: npm-cache-path
-        shell: bash
-        run: |
-          if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            NPM_CACHE_PATH=$HOME/AppData/Roaming/npm-cache
-            NPM_CACHE_PATH=$( cygpath --mixed --absolute "$NPM_CACHE_PATH")
-          else
-            NPM_CACHE_PATH="$HOME/.npm"
-          fi
-          echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
-          echo "##[set-output name=dir;]$NPM_CACHE_PATH"       
-          
-          echo "keypath: $NPM_CACHE_PATH/**/package-lock.json"
-          echo "##[set-output name=keypath;]$NPM_CACHE_PATH/**/package-lock.json"
-                
-      - name: Restore npm cache
-        uses: actions/cache@v1        
-        with:
-          path: ${{ steps.npm-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}', steps.npm-cache-path.outputs.keypath)) }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       
       - name: Install esy
         run: npm -g install esy@0.5.8
@@ -81,14 +57,24 @@ jobs:
           key: v1-esy-${{ matrix.os }}-${{ hashFiles('**/index.json') }}
           restore-keys: |
             v1-esy-${{ matrix.os }}-
-            
-      - name: esy install and build and release
+      
+      - name: esy install and build
         working-directory: bs-emotion-ppx
         run: |                    
           esy install 
-          esy build     
-          esy release
+          esy build               
           
+      - name: bs-emotion-ppx test
+        working-directory: bs-emotion-ppx/test
+        run: |                    
+          esy install
+          esy build              
+                           
+      - name: bs-emotion-ppx release
+        working-directory: bs-emotion-ppx
+        run: |                    
+          esy release          
+      
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
