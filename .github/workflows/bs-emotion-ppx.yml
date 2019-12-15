@@ -46,7 +46,7 @@ jobs:
         uses: actions/cache@v1        
         with:
           path: ${{ steps.npm-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('{0}', ${{ steps.npm-cache-path.outputs.keypath }}) }}
+          key: ${{ runner.os }}-node-${{ hashFiles('{0}', steps.npm-cache-path.outputs.keypath) }}
           restore-keys: |
             ${{ runner.os }}-node-
       
