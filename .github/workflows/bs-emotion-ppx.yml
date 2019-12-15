@@ -38,7 +38,7 @@ jobs:
             NPM_CACHE_PATH="$HOME/.npm"
           fi
           echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
-          echo "::set-output name=dir::$(NPM_CACHE_PATH)"
+          echo "##[set-output name=dir;]$NPM_CACHE_PATH"
       
       - name: Restore yarn cache
         uses: actions/cache@v1
