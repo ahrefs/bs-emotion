@@ -70,8 +70,14 @@ jobs:
           else
             BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)")
           fi
+          BS_EMOTION_PPX_PATH=$(dirname "${BS_EMOTION_PPX_PATH}")
           echo "BS_EMOTION_PPX_PATH: $BS_EMOTION_PPX_PATH"          
-          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"          
+          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"
+      - name: Upload artifacts ${{ matrix.os }}        
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ matrix.os }}
+          path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
       
 
   publish:
