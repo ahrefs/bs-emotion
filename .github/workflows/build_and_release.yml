@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: ${{ steps.bs-emotion-ppx_path.outputs.path }}
+          path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
 
   publish:
     needs: test_and_build
