@@ -11,9 +11,9 @@ on:
     branches:
       - master    
 
-jobs:
-  test_and_build:
-    name: Test and build ${{ matrix.os }}
+jobs:      
+  build_test_upload_project:
+    name: Build, Test and Upload bs-emotion/bs-emotion-ppx on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -22,13 +22,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install esy
-        run: npm install -g esy@0.5.8
-      - name: Get esy store path
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: "[install esy]"
+        run: yarn global add esy@0.5.8      
+              
+      - name: "[esy store path]"
         id: esy_cache_path
         shell: bash
         run: |
@@ -47,41 +50,47 @@ jobs:
           fi
           echo "THE_ESY__CACHE_INSTALL_PATH: $THE_ESY__CACHE_INSTALL_PATH"
           echo "##[set-output name=path;]$THE_ESY__CACHE_INSTALL_PATH"
-      - name: Restore esy cache
+      
+      - name: "[esy cache]"
         uses: actions/cache@v1
         with:
           path: ${{ steps.esy_cache_path.outputs.path }}
           key: v1-esy-${{ matrix.os }}-${{ hashFiles('**/index.json') }}
           restore-keys: |
             v1-esy-${{ matrix.os }}-
-      - name: esy install and build
+      
+      - name: "[bs-emotion]"
+        working-directory: bs-emotion
         run: |          
-          cd bs-emotion-ppx
+          yarn install
+          yarn build
+          
+      - name: "[bs-emotion-ppx]"
+        working-directory: bs-emotion-ppx
+        run: |          
           esy install 
           esy build
-      - name: Retrieve bs-emotion-ppx binary path
-        id: bs-emotion-ppx-path
-        shell: bash
+          
+      - name: "[bs-emotion-ppx/test]"
+        working-directory: bs-emotion-ppx/test
         run: |
-          cd bs-emotion-ppx          
-          # converts git/bash posix path to windows path - https://stackoverflow.com/questions/13701218/windows-path-to-posix-path-conversion-in-bash
-          if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
-          else
-            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)")
-          fi
-          BS_EMOTION_PPX_PATH=$(dirname "${BS_EMOTION_PPX_PATH}")
-          echo "BS_EMOTION_PPX_PATH: $BS_EMOTION_PPX_PATH"          
-          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"
-      - name: Upload artifacts ${{ matrix.os }}        
-        uses: actions/upload-artifact@master
+          esy install
+          esy build
+             
+      - name: "[bs-emotion-ppx] esy release"
+        working-directory: bs-emotion-ppx
+        run: |
+          esy release
+          
+      - name: "[bs-emotion-ppx artifacts ${{ matrix.os }}]"
+        uses: actions/upload-artifact@master        
         with:
           name: ${{ matrix.os }}
-          path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
-      
+          path: bs-emotion-ppx/_release
+          
 
   publish:
-    needs: test_and_build
+    needs: build_test_upload_project
     if: github.event_name != 'pull_request'
     name: Publish
     runs-on: ubuntu-latest
@@ -121,9 +130,10 @@ jobs:
           mv binaries/windows/bs-emotion-ppx.exe bin/bs-emotion-ppx-win-x64.exe
           mv binaries/linux/bs-emotion-ppx bin/bs-emotion-ppx-linux-x64.exe
 
-      - name: Publish
+      - name: Publish bs-emotion
+        working-directory: bs-emotion
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
-        run: npm publish
+        run: yarn publish        
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
 
