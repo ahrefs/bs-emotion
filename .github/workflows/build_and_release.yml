@@ -60,23 +60,18 @@ jobs:
           esy install 
           esy build
       - name: Retrieve bs-emotion-ppx binary path
-        id: bs-emotion-ppx_path
+        id: bs-emotion-ppx-path
         shell: bash
         run: |
-          cd bs-emotion-ppx 
-          # from https://stackoverflow.com/a/24848739/617787
-          s=$(pwd); d=$(dirname $(esy x which bs-emotion-ppx));          
-          while [ "${d#$s/}" == "${d}" ]
-          do s=$(dirname $s);b="../${b}"; done; 
+          cd bs-emotion-ppx          
+          # converts git/bash posix path to windows path - https://stackoverflow.com/questions/13701218/windows-path-to-posix-path-conversion-in-bash
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            ESY__BINARY_PATH=${b}${d#$s/}/bs-emotion-ppx.exe
+            bs-emotion-ppx-path=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
           else
-            ESY__BINARY_PATH=../bs-emotion-ppx/${b}${d#$s/}/bs-emotion-ppx
+            bs-emotion-ppx-path=$(esy x which bs-emotion-ppx)
           fi
-          echo "ESY__BINARY_PATH: $ESY__BINARY_PATH"
-          echo "Full path: $(esy x which bs-emotion-ppx)"
-          #echo "##[set-output name=path;]$ESY__BINARY_PATH"
-          echo "##[set-output name=path;]$(esy x which bs-emotion-ppx)"
+          echo "bs-emotion-ppx-path: $bs-emotion-ppx-path"          
+          echo "##[set-output name=path;]$bs-emotion-ppx-path"          
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
