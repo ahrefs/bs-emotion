@@ -27,20 +27,28 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache path
+        id: npm-cache-path
+        shell: bash
+        run: |
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            NPM_CACHE_PATH=$HOME/AppData/Roaming/npm-cache
+            NPM_CACHE_PATH=$( cygpath --mixed --absolute "$NPM_CACHE_PATH")
+          else
+            NPM_CACHE_PATH= ~/.npm          
+          echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
+          echo "::set-output name=dir::$(NPM_CACHE_PATH)"
       
       - name: Restore yarn cache
         uses: actions/cache@v1
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-path.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-node-
       
       - name: Install esy
-        run: yarn global add esy@0.5.8
+        run: npm -g install esy@0.5.8
         
       - name: Get esy store path
         id: esy_cache_path
