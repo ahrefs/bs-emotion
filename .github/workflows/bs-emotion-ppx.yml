@@ -40,13 +40,14 @@ jobs:
           echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
           echo "##[set-output name=dir;]$NPM_CACHE_PATH"       
           
+          echo "keypath: $NPM_CACHE_PATH/**/package-lock.json"
           echo "##[set-output name=keypath;]$NPM_CACHE_PATH/**/package-lock.json"
                 
       - name: Restore npm cache
         uses: actions/cache@v1        
         with:
           path: ${{ steps.npm-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('{0}', steps.npm-cache-path.outputs.keypath) }}
+          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}', steps.npm-cache-path.outputs.keypath)) }}
           restore-keys: |
             ${{ runner.os }}-node-
       
