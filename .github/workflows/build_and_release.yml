@@ -66,12 +66,12 @@ jobs:
           cd bs-emotion-ppx          
           # converts git/bash posix path to windows path - https://stackoverflow.com/questions/13701218/windows-path-to-posix-path-conversion-in-bash
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            bs-emotion-ppx-path=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
+            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
           else
-            bs-emotion-ppx-path=$(esy x which bs-emotion-ppx)
+            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)")
           fi
-          echo "bs-emotion-ppx-path: $bs-emotion-ppx-path"          
-          echo "##[set-output name=path;]$bs-emotion-ppx-path"          
+          echo "BS_EMOTION_PPX_PATH: $BS_EMOTION_PPX_PATH"          
+          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"          
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
