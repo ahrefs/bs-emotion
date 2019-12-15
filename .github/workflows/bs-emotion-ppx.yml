@@ -36,6 +36,7 @@ jobs:
             NPM_CACHE_PATH=$( cygpath --mixed --absolute "$NPM_CACHE_PATH")
           else
             NPM_CACHE_PATH= ~/.npm          
+          fi
           echo "NPM_CACHE_PATH: $NPM_CACHE_PATH"
           echo "::set-output name=dir::$(NPM_CACHE_PATH)"
       
