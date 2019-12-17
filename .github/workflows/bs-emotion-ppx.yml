@@ -92,7 +92,10 @@ jobs:
             mv _release/package.json upload/package.json
             mv _release/README.md upload/README.md
           fi
-          UPLOAD_PATH=$(realpath upload)          
+          UPLOAD_PATH=$(realpath upload)
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            UPLOAD_PATH=$( cygpath --mixed --absolute "$UPLOAD_PATH")
+          fi          
           echo "UPLOAD_PATH: $UPLOAD_PATH"          
           echo "##[set-output name=path;]$UPLOAD_PATH"          
       
