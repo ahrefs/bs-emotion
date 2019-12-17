@@ -89,4 +89,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: bs-emotion-ppx/_release   
+          path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
