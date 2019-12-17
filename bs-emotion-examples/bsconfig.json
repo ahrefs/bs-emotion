@@ -1,12 +1,8 @@
 {
   "name": "bs-emotion-examples",
   "sources": ["src"],
-  "bs-dependencies": [
-    "@ahrefs/bs-emotion",
-    "reason-react",
-    "re-classnames"
-  ],
-  "reason": { "react-jsx": 2 },
+  "bs-dependencies": ["@ahrefs/bs-emotion", "reason-react", "re-classnames"],
+  "reason": { "react-jsx": 3 },
   "refmt": 3,
   "bsc-flags": ["-open Belt"],
   "ppx-flags": ["@ahrefs/bs-emotion-ppx/bin/bs-emotion-ppx"],
