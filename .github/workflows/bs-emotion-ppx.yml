@@ -70,16 +70,23 @@ jobs:
           esy install
           esy build              
                            
-      - name: bs-emotion-ppx release
+      - name: Retrieve bs-emotion-ppx binary path
+        id: bs-emotion-ppx-path
         working-directory: bs-emotion-ppx
-        run: |                    
-          esy release          
+        shell: bash
+        run: |          
+          # converts git/bash posix path to windows path - https://stackoverflow.com/questions/13701218/windows-path-to-posix-path-conversion-in-bash
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
+          else
+            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)")
+          fi
+          BS_EMOTION_PPX_PATH=$(dirname "${BS_EMOTION_PPX_PATH}")
+          echo "BS_EMOTION_PPX_PATH: $BS_EMOTION_PPX_PATH"          
+          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"
       
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: bs-emotion-ppx/_release
-      
-
- 
+          path: bs-emotion-ppx/_release   
