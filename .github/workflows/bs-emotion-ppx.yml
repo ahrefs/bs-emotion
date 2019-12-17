@@ -62,28 +62,40 @@ jobs:
         working-directory: bs-emotion-ppx
         run: |                    
           esy install 
-          esy build               
+          esy build          
           
       - name: bs-emotion-ppx test
         working-directory: bs-emotion-ppx/test
         run: |                    
           esy install
-          esy build              
+          esy build 
+
+      - name: bs-emotion-ppx release
+        working-directory: bs-emotion-ppx
+        run: |                    
+          esy release            
                            
       - name: Retrieve bs-emotion-ppx binary path
         id: bs-emotion-ppx-path
         working-directory: bs-emotion-ppx
         shell: bash
-        run: |          
-          # converts git/bash posix path to windows path - https://stackoverflow.com/questions/13701218/windows-path-to-posix-path-conversion-in-bash
+        run: |                    
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)" | sed -e 's/^\///' -e 's/\//\\/g' -e 's/^./\0:/')            
+            BS_EMOTION_PPX_PATH=$( echo "$(esy x which bs-emotion-ppx)") 
+            BS_EMOTION_PPX_PATH=$( cygpath --mixed --absolute "$BS_EMOTION_PPX_PATH")           
           else
             BS_EMOTION_PPX_PATH=$(echo "$(esy x which bs-emotion-ppx)")
           fi
-          BS_EMOTION_PPX_PATH=$(dirname "${BS_EMOTION_PPX_PATH}")
-          echo "BS_EMOTION_PPX_PATH: $BS_EMOTION_PPX_PATH"          
-          echo "##[set-output name=path;]$BS_EMOTION_PPX_PATH"
+          mkdir upload 
+          cp $BS_EMOTION_PPX_PATH upload/
+          if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+            mv _release/package.json upload/package.json
+            mv _release/README.md upload/README.md
+          fi
+          UPLOAD_PATH=$(realpath upload)
+          UPLOAD_PATH=$(dirname "${UPLOAD_PATH}")
+          echo "UPLOAD_PATH: $UPLOAD_PATH"          
+          echo "##[set-output name=path;]$UPLOAD_PATH"          
       
       - name: Upload artifacts ${{ matrix.os }}        
         uses: actions/upload-artifact@master
@@ -103,38 +115,47 @@ jobs:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Create release artifacts
+        working-directory: bs-emotion-ppx
+        run: |
+          esy install
+          esy build
+          esy release
+
       - name: Download linux artifacts
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         uses: actions/download-artifact@master
         with:
           name: ubuntu-latest
-          path: release/binaries/linux
+          path: release/linux
 
       - name: Download macOS artifacts
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         uses: actions/download-artifact@master
         with:
           name: macOS-latest
-          path: release/binaries/darwin
+          path: release/darwin
 
       - name: Download windows artifacts
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         uses: actions/download-artifact@master
         with:
           name: windows-latest
-          path: release/binaries/windows
+          path: release/windows
 
       - name: Move artifacts
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         run: |          
-          pwd
           mkdir -p release/bin
-          mv release/binaries/darwin/bs-emotion-ppx release/bin/bs-emotion-ppx-darwin-x64.exe
-          mv release/binaries/windows/bs-emotion-ppx.exe release/bin/bs-emotion-ppx-win-x64.exe
-          mv release/binaries/linux/bs-emotion-ppx release/bin/bs-emotion-ppx-linux-x64.exe
+          mv release/darwin/bs-emotion-ppx release/bin/bs-emotion-ppx-darwin-x64.exe
+          mv release/windows/bs-emotion-ppx.exe release/bin/bs-emotion-ppx-win-x64.exe
+          mv release/linux/bs-emotion-ppx release/bin/bs-emotion-ppx-linux-x64.exe
+          mv release/linux/package.json release/package.json
+          mv release/linux/README.md release/README.md
 
       - name: Publish
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
+        working-directory: bs-emotion-ppx/release
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
