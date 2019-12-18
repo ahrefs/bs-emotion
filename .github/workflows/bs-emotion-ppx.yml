@@ -68,12 +68,7 @@ jobs:
         working-directory: bs-emotion-ppx/test
         run: |                    
           esy install
-          esy build 
-
-      - name: bs-emotion-ppx release
-        working-directory: bs-emotion-ppx
-        run: |                    
-          esy release            
+          esy build               
                            
       - name: Retrieve bs-emotion-ppx binary path
         id: bs-emotion-ppx-path
