@@ -115,14 +115,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Create release artifacts
-        working-directory: bs-emotion-ppx
-        run: |
-          esy install
-          esy build
-          esy release
+          registry-url: "https://registry.npmjs.org"    
 
       - name: Download linux artifacts
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
