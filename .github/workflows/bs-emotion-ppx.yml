@@ -89,8 +89,9 @@ jobs:
           mkdir upload 
           cp $BS_EMOTION_PPX_PATH upload/
           if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
-            mv _release/package.json upload/package.json
-            mv _release/README.md upload/README.md
+            mv package.json upload/package.json
+            mv README.md upload/README.md
+            mv postinstall.js upload/postinstall.js
           fi
           UPLOAD_PATH=$( echo "$(pwd)/upload")
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
@@ -146,6 +147,7 @@ jobs:
           mv release/windows/bs-emotion-ppx.exe release/bin/bs-emotion-ppx-win-x64.exe
           mv release/linux/bs-emotion-ppx release/bin/bs-emotion-ppx-linux-x64.exe
           mv release/linux/package.json release/package.json
+          mv release/linux/postinstall.js release/postinstall.js
           mv release/linux/README.md release/README.md
 
       - name: Publish
