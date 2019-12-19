@@ -8,22 +8,21 @@ var binDir = path.join(rootDir, "bin");
 /**
  * Returns OS specific binary to copy to "bin" folder.
  */
-function getBinaryToCopy() {
+function getBinaryDetails() {
     switch (os.type()) {
         case 'Darwin':
-            return path.join(binDir, "bs-emotion-ppx-darwin-x64.exe");
+            return { src: path.join(binDir, "bs-emotion-ppx-darwin-x64.exe"), dest: path.join(binDir, "bs-emotion-ppx") };
 
         case 'Linux':
-            return path.join(binDir, "bs-emotion-ppx-linux-x64.exe");
+            return { src: path.join(binDir, "bs-emotion-ppx-linux-x64.exe"), dest: path.join(binDir, "bs-emotion-ppx") }
 
         case 'Windows_NT':
-            return path.join(binDir, "bs-emotion-ppx-win-x64.exe");
+            return { src: path.join(binDir, "bs-emotion-ppx-win-x64.exe"), dest: path.join(binDir, "bs-emotion-ppx.exe") }
 
         default:
             throw ("Not supported" + os.type());
     }
 }
 
-var srcBinary = getBinaryToCopy();
-var destBinary = path.join(binDir, "bs-emotion-ppx");
-fs.copyFileSync(srcBinary, destBinary);
+var binaryDetails = getBinaryDetails();
+fs.copyFileSync(binaryDetails.src, binaryDetails.dest);
