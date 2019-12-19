@@ -144,6 +144,8 @@ jobs:
           mv release/linux/package.json release/package.json
           mv release/linux/postinstall.js release/postinstall.js
           mv release/linux/README.md release/README.md
+          chmod +x release/*.exe
+          ls -l release
 
       - name: Publish
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
