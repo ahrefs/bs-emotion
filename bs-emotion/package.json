@@ -1,6 +1,6 @@
 {
-    "name": "@bikallem/bs-emotion",
-    "version": "1.0.1",
+    "name": "@ahrefs/bs-emotion",
+    "version": "1.0.0",
     "description": "BuckleScript bindings to Emotion",
     "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
     "license": "MIT",
