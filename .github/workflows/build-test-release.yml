@@ -1,12 +1,13 @@
-name: build and release bs-emotion
+name: build, test and publish bs-emotion/bs-emotion-ppx
 
 on:  
-  push:
-    tags:
-      - v*
+  push:    
     branches: 
       - master
         
+  release:
+    types: [published]
+    
   pull_request:
     branches:
       - master    
@@ -101,9 +102,9 @@ jobs:
           name: ${{ matrix.os }}
           path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
 
-  publish:
+  publish:    
     needs: test_and_build
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'release' && success()
     name: Publish
     runs-on: ubuntu-latest
     steps:
@@ -113,29 +114,25 @@ jobs:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"    
 
-      - name: Download linux artifacts
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
+      - name: Download linux artifacts        
         uses: actions/download-artifact@master
         with:
           name: ubuntu-latest
           path: release/linux
 
-      - name: Download macOS artifacts
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
+      - name: Download macOS artifacts        
         uses: actions/download-artifact@master
         with:
           name: macOS-latest
           path: release/darwin
 
       - name: Download windows artifacts
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         uses: actions/download-artifact@master
         with:
           name: windows-latest
           path: release/windows
 
       - name: Move artifacts
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
         run: |          
           mkdir -p release/bin
           mv release/darwin/bs-emotion-ppx release/bin/bs-emotion-ppx-darwin-x64.exe
@@ -147,9 +144,14 @@ jobs:
           chmod +x release/bin/*.exe
           ls -l release
 
-      - name: Publish
-        if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master') && success()
+      - name: Publish bs-emotion-ppx       
         working-directory: release
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          
+      - name: Publish bs-emotion
+        working-directory: bs-emotion
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

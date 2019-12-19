@@ -6,6 +6,6 @@
     ],
     "license": "MIT",
     "name": "@bikallem/bs-emotion-ppx",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "scripts": { "postinstall": "node ./postinstall.js" }
 }

@@ -1,41 +1,41 @@
 {
-  "name": "@ahrefs/bs-emotion",
-  "version": "1.0.0",
-  "description": "BuckleScript bindings to Emotion",
-  "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ahrefs/bs-emotion.git"
-  },
-  "main": "src/Emotion.re",
-  "scripts": {
-    "start": "bsb -clean-world -make-world -w",
-    "build": "bsb -clean-world -make-world",
-    "test": "exit 0"
-  },
-  "files": [
-    "src",
-    "bsconfig.json"
-  ],
-  "peerDependencies": {
-    "bs-platform": "^7.0.1"
-  },
-  "dependencies": {
-    "@minima.app/re-css": "0.1.0",
-    "emotion": "9.2.12"
-  },
-  "devDependencies": {
-    "bs-platform": "7.0.1"
-  },
-  "keywords": [
-    "css",
-    "css-in-js",
-    "react",
-    "emotion",
-    "reason",
-    "reasonml",
-    "ocaml",
-    "bucklescript"
-  ]
+    "name": "@ahrefs/bs-emotion",
+    "version": "1.0.1",
+    "description": "BuckleScript bindings to Emotion",
+    "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ahrefs/bs-emotion.git"
+    },
+    "main": "src/Emotion.re",
+    "scripts": {
+        "start": "bsb -clean-world -make-world -w",
+        "build": "bsb -clean-world -make-world",
+        "test": "exit 0"
+    },
+    "files": [
+        "src",
+        "bsconfig.json"
+    ],
+    "peerDependencies": {
+        "bs-platform": "^7.0.1"
+    },
+    "dependencies": {
+        "@minima.app/re-css": "0.1.0",
+        "emotion": "9.2.12"
+    },
+    "devDependencies": {
+        "bs-platform": "7.0.1"
+    },
+    "keywords": [
+        "css",
+        "css-in-js",
+        "react",
+        "emotion",
+        "reason",
+        "reasonml",
+        "ocaml",
+        "bucklescript"
+    ]
 }
