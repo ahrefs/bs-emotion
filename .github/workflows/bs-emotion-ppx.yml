@@ -144,7 +144,7 @@ jobs:
           mv release/linux/package.json release/package.json
           mv release/linux/postinstall.js release/postinstall.js
           mv release/linux/README.md release/README.md
-          chmod +x release/*.exe
+          chmod +x release/bin/*.exe
           ls -l release
 
       - name: Publish
