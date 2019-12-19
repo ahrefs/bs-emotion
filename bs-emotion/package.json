@@ -1,5 +1,5 @@
 {
-    "name": "@ahrefs/bs-emotion",
+    "name": "@bikallem/bs-emotion",
     "version": "1.0.1",
     "description": "BuckleScript bindings to Emotion",
     "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
