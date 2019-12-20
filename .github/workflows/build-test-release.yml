@@ -13,8 +13,8 @@ on:
       - master    
 
 jobs:
-  test_and_build:
-    name: Test and build ${{ matrix.os }}
+  build_and_test:
+    name: Build and test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -103,7 +103,7 @@ jobs:
           path: ${{ steps.bs-emotion-ppx-path.outputs.path }}
 
   publish:    
-    needs: test_and_build
+    needs: build_and_test
     if: github.event_name == 'release' && success()
     name: Publish
     runs-on: ubuntu-latest
