@@ -1,5 +1,9 @@
 # History
 
+## 1.0.1
+
+Noop. Sync version with `bs-emotion`.
+
 ## 1.0.0
 
 Add support for BuckleScript v7 -> make ppx compatible with OCaml 4.06 by

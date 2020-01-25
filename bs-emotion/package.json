@@ -1,6 +1,6 @@
 {
   "name": "@ahrefs/bs-emotion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BuckleScript bindings to Emotion",
   "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "bs-platform": "^7.0.1"
   },
   "dependencies": {
-    "@minima.app/re-css": "0.1.0",
+    "@minima.app/re-css": "1.0.1",
     "emotion": "9.2.12"
   },
   "devDependencies": {

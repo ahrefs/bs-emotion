@@ -8,3 +8,8 @@ In order to publish `@ahrefs/bs-emotion-ppx` package, the following steps are ne
 ## Publishing bs-emotion package
 
 Can be published normally from `bs-emotion` folder.
+
+## Update bs-emotion-examples
+
+After publishing a new version, update the file `package.json` in `bs-emotion-examples` folder to point to latest and
+run `yarn` from that same folder.
