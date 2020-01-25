@@ -1,6 +1,10 @@
 # History
 
 
+## 1.0.1
+
+Upgrade `@minima.app/re-css` to 1.0.1.
+
 ## 1.0.0
 
 Noop. Sync version with `bs-emotion-ppx` for BuckleScript v7 to keep major versions consistent.
