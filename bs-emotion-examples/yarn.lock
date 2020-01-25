@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@ahrefs/bs-emotion-ppx@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-1.0.0.tgz#e1b5469dc7bbc507508b9fa5cd53422f831ebf40"
-  integrity sha512-+vLZsrSvjWA5Jbc/Y9M7/SN65Vg9y1FNNImLbb10w4mEkBmpvc9+ZjWHsAn+tfI7f9oNg/oqk1sl450y4YC5gw==
+"@ahrefs/bs-emotion-ppx@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion-ppx/-/bs-emotion-ppx-1.0.1.tgz#5bdb6c3e19718a36903b866aca67c4f8807d9fbb"
+  integrity sha512-6C7j4RGMd73Uz+Nj3Qo4RT9bpmWGh/+djOGvICjMyd0wvrNkJtVMr90eob+1scCP5P3SPH2aUpmyZ9Va5FMcpw==
 
-"@ahrefs/bs-emotion@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion/-/bs-emotion-1.0.0.tgz#1463f7c246ca0d65dbd45c854cca00ea72bda257"
-  integrity sha512-HfYhGMq63OjMNX70ZsFx2bQCh3SXspvBEYSyx0Bp536lL9g2y5GVoob03HAZrWkldGxTXNzAqZAkINSmMcAJtw==
+"@ahrefs/bs-emotion@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ahrefs/bs-emotion/-/bs-emotion-1.0.1.tgz#8fbca5b5ee14a4db21e965d67a2e4053f6f825ea"
+  integrity sha512-oUSKPX/JZ3UDSrdlNj8cesO7yuxwnxS6PvHK3ZA0uI69jkwGJY7ZUDxzYWRg6x/6fZ8qGSSUEoq/moBmwmpjUg==
   dependencies:
-    "@minima.app/re-css" "0.1.0"
+    "@minima.app/re-css" "1.0.1"
     emotion "9.2.12"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
@@ -761,10 +761,10 @@
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.3.tgz#f060bf6eaafae4d56a7dac618980838b0696e2ab"
   integrity sha512-FmuxfCuolpLl0AnQ2NHSzoUKWEJDFl63qXjzdoWBVyFCXzMGm1spBzk7LeHNoVCiWCF7mRVms9e6jEV9+MoPbg==
 
-"@minima.app/re-css@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-0.1.0.tgz#482295907f26ac8bfb0e2e71213407a53afdf423"
-  integrity sha512-QU2rjlUZKv6CXahpvyQj+WHHl7sr9575QuS4xwjCgqusYWV71j/PQVCgNUn9+ZOH/pVS0Kr4pBFRJpKZq1ez8Q==
+"@minima.app/re-css@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@minima.app/re-css/-/re-css-1.0.1.tgz#605854db397987c9adbdfb991ebe56e9191c2f3d"
+  integrity sha512-j0ocaNP4K7/XdSUy7GhH/MTqyq4ZDeCiRXffoUn85fg5V5bwnD57XZzd5miCBEFRxctgNdBdhp2+x3KSbd3uow==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -4223,10 +4223,10 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-re-classnames@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/re-classnames/-/re-classnames-4.0.0.tgz#11c62c5f3f8696c20689fdc6b70cdbea9e3496ef"
-  integrity sha512-uYtBCGfSHlNiAKg1nWRnZMWKTaFOHFPmUdygf7j9/bqjh2bTkl5f/8oxSocZriNnCcmdc1JD9YbVSI91lYvONA==
+re-classnames@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/re-classnames/-/re-classnames-4.1.0.tgz#a13e1d66d84518f55e78435579bc303f7dba55e1"
+  integrity sha512-3gWpk6R5AP3H2r+k+6rcEygcrSJ6wRbvEpPcW55USHhSCMNdHMRs9iD02mZ3+urKQygys+AjZMQXrZ6HDBA2IQ==
 
 react-dom@>=16.8.1:
   version "16.12.0"
