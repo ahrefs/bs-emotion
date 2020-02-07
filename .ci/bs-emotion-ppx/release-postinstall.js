@@ -149,28 +149,36 @@ var copyPlatformBinaries = platformPath => {
   });
 };
 
+var firstRun = false;
 try {
   fs.mkdirSync("_export");
-} catch (e) {
-  console.log("Could not create _export folder");
+  firstRun = true;
+} catch (err) {
+  if (err.code !== "EEXIST") {
+    throw err;
+  } else {
+    console.log("Could not create _export folder because the folder exists already, binaries will not be copied");
+  }
 }
 
-switch (platform) {
-  case "win32":
-    if (arch() !== "x64") {
-      console.warn("error: x86 is currently not supported on Windows");
-      process.exit(1);
-    }
+if (firstRun) {
+  switch (platform) {
+    case "win32":
+      if (arch() !== "x64") {
+        console.warn("error: x86 is currently not supported on Windows");
+        process.exit(1);
+      }
 
-    copyPlatformBinaries("windows-x64");
-    break;
-  case "linux":
-  case "darwin":
-    copyPlatformBinaries(platform);
-    break;
-  default:
-    console.warn("error: no release built for the " + platform + " platform");
-    process.exit(1);
+      copyPlatformBinaries("windows-x64");
+      break;
+    case "linux":
+    case "darwin":
+      copyPlatformBinaries(platform);
+      break;
+    default:
+      console.warn("error: no release built for the " + platform + " platform");
+      process.exit(1);
+  }
 }
 
 require("./esyInstallRelease");
