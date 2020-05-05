@@ -32,7 +32,9 @@ jobs:
 
       - name: Print esy cache
         id: print_esy_cache
-        run: node .github/workflows/print_esy_cache.js
+        run: |
+          cd ..
+          node .github/workflows/print_esy_cache.js
 
       - name: Try to restore build cache
         id: deps-cache-macos
