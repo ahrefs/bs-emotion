@@ -49,8 +49,4 @@ jobs:
           esy build
           # Cleanup build cache in case dependencies have changed
           esy cleanup .
-      - name: Test
-        run: esy test
 
-      - name: Build docs
-        run: esy doc

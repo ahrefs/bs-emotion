@@ -19,11 +19,13 @@
     "ocaml",
     "bucklescript"
   ],
+  "scripts": {
+    "format": "dune build @fmt --auto-promote --root .",
+    "release-static": "dune build --root . --only-packages bs-emotion-ppx --ignore-promoted-rules --no-config --profile release-static"
+  },
   "esy": {
-    "build": "dune build -p bs-emotion-ppx",
-    "release": {
-      "bin": ["bs-emotion-ppx"]
-    }
+    "build": [["dune", "build", "-p", "bs-emotion-ppx"]],
+    "buildsInSource": "_build"
   },
   "repository": {
     "type": "git",
