@@ -1,7 +1,7 @@
 # bs-emotion
 
-![https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion%22](https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion/badge.svg)
-![https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion-ppx%22](https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion-ppx/badge.svg)
+<a href="https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion%22"><img alt="bs-emotion status" src="https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion/badge.svg"></a>
+<a href="https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion-ppx%22"><img alt="bs-emotion-ppx status" src="https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion-ppx/badge.svg"></a>
 
 BuckleScript bindings to [Emotion](https://emotion.sh).
 
