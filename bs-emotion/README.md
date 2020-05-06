@@ -43,7 +43,7 @@ npm install --save-dev @ahrefs/bs-emotion-ppx
 Then add it to `bsconfig.json`:
 
 ```json
-"ppx-flags": ["@ahrefs/bs-emotion-ppx/bin/bs-emotion-ppx"],
+"ppx-flags": ["@ahrefs/bs-emotion-ppx/ppx"],
 ```
 
 ## Usage
