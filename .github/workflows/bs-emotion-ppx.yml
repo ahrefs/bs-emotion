@@ -21,8 +21,6 @@ jobs:
 
       - run: npm install -g esy
 
-      - run: npm install -g yarn
-
       - name: Try to restore install cache
         uses: actions/cache@v1
         with:
@@ -52,26 +50,18 @@ jobs:
       - name: "[Test] esy install"
         run: esy install
         working-directory: bs-emotion-ppx/test
-        env:
-          CI: true
 
       - name: "[Test] esy build"
         run: esy build
         working-directory: bs-emotion-ppx/test
-        env:
-          CI: true
 
       - name: "[Test] yarn install"
         run: yarn install
         working-directory: bs-emotion-ppx/test
-        env:
-          CI: true
 
       - name: "[Test] yarn build"
         run: yarn build
         working-directory: bs-emotion-ppx/test
-        env:
-          CI: true
 
       - name: Release
         run: esy release-static
@@ -134,5 +124,5 @@ jobs:
         # if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.os }}
+          name: Release
           path: bs-emotion-ppx
