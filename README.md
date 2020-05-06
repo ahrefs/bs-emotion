@@ -1,6 +1,7 @@
 # bs-emotion
 
-![Build bs-emotion-ppx](https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion-ppx/badge.svg)
+![bs-emotion](https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion/badge.svg)
+![bs-emotion-ppx](https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion-ppx/badge.svg)
 
 BuckleScript bindings to [Emotion](https://emotion.sh).
 

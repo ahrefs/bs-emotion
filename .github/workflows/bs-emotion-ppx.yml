@@ -21,6 +21,9 @@ jobs:
       - name: Install esy
         run: npm install -g esy
 
+      - name: Install yarn
+      - run: npm install -g yarn
+
       - name: Try to restore install cache
         uses: actions/cache@v1
         with:
