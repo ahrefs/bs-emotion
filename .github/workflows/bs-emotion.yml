@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: 12
 
+      - run: npm install -g yarn
+
       - run: yarn install
         working-directory: bs-emotion-ppx/test
         env:
