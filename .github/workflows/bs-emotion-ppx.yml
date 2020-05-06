@@ -45,10 +45,7 @@ jobs:
           restore-keys: build-${{ matrix.os }}-
 
       - name: Build
-        run: |
-          esy build
-          # Cleanup build cache in case dependencies have changed
-          esy cleanup .
+        run: esy build
 
       - name: '[Test] esy install'
         run: esy install
@@ -82,3 +79,8 @@ jobs:
         with:
           name: ${{ matrix.os }}
           path: _build/default/bin/BsEmotionPpx.exe
+
+      - name: Cleanup
+        run: |
+          # Cleanup build cache in case dependencies have changed
+          esy cleanup .
