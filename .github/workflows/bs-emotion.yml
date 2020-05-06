@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 defaults:
   run:
+    shell: bash
     working-directory: bs-emotion
 
 jobs:
@@ -18,5 +19,7 @@ jobs:
           node-version: 12
 
       - run: yarn install
+        working-directory: bs-emotion
 
       - run: yarn build
+        working-directory: bs-emotion
