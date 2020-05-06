@@ -50,25 +50,25 @@ jobs:
           # Cleanup build cache in case dependencies have changed
           esy cleanup .
 
-      - name: [Test] esy install
+      - name: '[Test] esy install'
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: [Test] esy build
+      - name: '[Test] esy build'
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: [Test] yarn install
+      - name: '[Test] yarn install'
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: [Test] yarn build
+      - name: '[Test] yarn build'
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
