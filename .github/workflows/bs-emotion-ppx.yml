@@ -108,7 +108,7 @@ jobs:
         if: success()
         uses: actions/download-artifact@v2
         with:
-          name: macOS-latest
+          name: macos-latest
           path: binaries/darwin
 
       - name: Download windows artifacts
