@@ -1,5 +1,8 @@
 # History
 
+## Next
+
+Noop. Sync version with `bs-emotion-ppx`.
 
 ## 1.0.1
 

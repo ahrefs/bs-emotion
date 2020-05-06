@@ -1,5 +1,9 @@
 # History
 
+## Next
+
+Changed path to binary (bsconfig ppx-flags need to be updated).
+
 ## 1.0.1
 
 Noop. Sync version with `bs-emotion`.
