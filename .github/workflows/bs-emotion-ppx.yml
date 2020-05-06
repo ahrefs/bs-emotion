@@ -104,21 +104,21 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ubuntu-latest
-          path: binaries/linux
+          path: bs-emotion-ppx/binaries/linux
 
       - name: Download macOS artifacts
         if: success()
         uses: actions/download-artifact@v2
         with:
           name: macos-latest
-          path: binaries/darwin
+          path: bs-emotion-ppx/binaries/darwin
 
       - name: Download windows artifacts
         if: success()
         uses: actions/download-artifact@v2
         with:
           name: windows-latest
-          path: binaries/windows
+          path: bs-emotion-ppx/binaries/windows
 
       - name: Move artifacts
         if: success()
