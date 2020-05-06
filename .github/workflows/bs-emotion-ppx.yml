@@ -54,19 +54,19 @@ jobs:
           CI: true
 
       - name: "[Test] esy build"
-        run: esy install
+        run: esy build
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
       - name: "[Test] yarn install"
-        run: esy install
+        run: yarn install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
       - name: "[Test] yarn build"
-        run: esy install
+        run: yarn build
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
@@ -122,6 +122,8 @@ jobs:
         if: success()
         run: |
           mkdir -p exe
+          ls -la binaries
+          ls -la binaries/darwin
           mv binaries/darwin/BsEmotionPpx.exe exe/graphql_ppx-darwin-x64.exe
           mv binaries/windows/BsEmotionPpx.exe exe/graphql_ppx-win-x64.exe
           mv binaries/linux/BsEmotionPpx.exe exe/graphql_ppx-linux-x64.exe

@@ -1,0 +1,29 @@
+name: Build bs-emotion
+
+on: [push, pull_request]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: bs-emotion
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - run: yarn install
+        working-directory: bs-emotion-ppx/test
+        env:
+          CI: true
+
+      - run: yarn build
+        working-directory: bs-emotion-ppx/test
+        env:
+          CI: true
