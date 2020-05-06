@@ -8,7 +8,7 @@ defaults:
     working-directory: bs-emotion-ppx
 
 jobs:
-  build:
+  test_and_build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install esy
         run: npm install -g esy
-        
+
       - name: Try to restore install cache
         uses: actions/cache@v1
         with:
@@ -47,25 +47,25 @@ jobs:
       - name: Build
         run: esy build
 
-      - name: '[Test] esy install'
+      - name: "[Test] esy install"
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: '[Test] esy build'
+      - name: "[Test] esy build"
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: '[Test] yarn install'
+      - name: "[Test] yarn install"
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
           CI: true
 
-      - name: '[Test] yarn build'
+      - name: "[Test] yarn build"
         run: esy install
         working-directory: bs-emotion-ppx/test
         env:
@@ -75,6 +75,7 @@ jobs:
         run: esy release-static
 
       - name: Upload artifacts ${{ matrix.os }}
+        # if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.os }}
@@ -84,3 +85,50 @@ jobs:
         run: |
           # Cleanup build cache in case dependencies have changed
           esy cleanup .
+
+  prepublish:
+    needs: test_and_build
+    # if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/')
+    name: (only on release) Prepublish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      
+      - name: Download linux artifacts
+        if: success()
+        uses: actions/download-artifact@v2
+        with:
+          name: ubuntu-latest
+          path: binaries/linux
+
+      - name: Download macOS artifacts
+        if: success()
+        uses: actions/download-artifact@v2
+        with:
+          name: macOS-latest
+          path: binaries/darwin
+
+      - name: Download windows artifacts
+        if: success()
+        uses: actions/download-artifact@v2
+        with:
+          name: windows-latest
+          path: binaries/windows
+
+      - name: Move artifacts
+        if: success()
+        run: |
+          mkdir -p exe
+          mv binaries/darwin/BsEmotionPpx.exe exe/graphql_ppx-darwin-x64.exe
+          mv binaries/windows/BsEmotionPpx.exe exe/graphql_ppx-win-x64.exe
+          mv binaries/linux/BsEmotionPpx.exe exe/graphql_ppx-linux-x64.exe
+
+      - name: Upload artifacts ${{ matrix.os }}
+        # if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.os }}
+          path: bs-emotion-ppx
