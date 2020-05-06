@@ -19,10 +19,10 @@ jobs:
           node-version: 12
 
       - run: |
-        pwd
-        ls -la
-        which yarn
-        yarn install
+          pwd
+          ls -la
+          which yarn
+          yarn install
 
       - run: yarn build
         working-directory: bs-emotion
