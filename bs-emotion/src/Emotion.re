@@ -606,6 +606,35 @@ let fixed = `fixed;
 let relative = `relative;
 let sticky = `sticky;
 
+let lineThrough = `lineThrough;
+let overline = `overline;
+let underline = `underline;
+
+let capitalize = `capitalize;
+let lowercase = `lowercase;
+let uppercase = `uppercase;
+
+let all = `all;
+let text = `text;
+
+let bottom = `bottom;
+let sub = `sub;
+let super = `super;
+let textBottom = `textBottom;
+let textTop = `textTop;
+
+let pre = `pre;
+let preLine = `preLine;
+let preWrap = `preWrap;
+
+let breakAll = `breakAll;
+let keepAll = `keepAll;
+
+let breakWord = `breakWord;
+
+let rtl = `rtl;
+let ltr = `ltr;
+
 let hidden = `hidden;
 let dotted = `dotted;
 let dashed = `dashed;
