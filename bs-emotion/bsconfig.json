@@ -4,7 +4,6 @@
   "bs-dependencies": [
     "@minima.app/re-css"
   ],
-  "reason": { "react-jsx": 2 },
   "refmt": 3,
   "bsc-flags": ["-open Belt"],
   "package-specs": {
