@@ -1,6 +1,10 @@
 # History
 
 
+## 1.0.2
+
+Remove unneeded `react-jsx` value from bs-config.
+
 ## 1.0.1
 
 Upgrade `@minima.app/re-css` to 1.0.1.

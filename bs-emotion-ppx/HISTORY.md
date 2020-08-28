@@ -1,5 +1,9 @@
 # History
 
+## 1.0.2
+
+Noop. Sync version with `bs-emotion`.
+
 ## 1.0.1
 
 Noop. Sync version with `bs-emotion`.
