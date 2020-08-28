@@ -1,8 +1,9 @@
 # History
 
-## Next
+## 2.0.0
 
 Changed path to binary (bsconfig ppx-flags need to be updated).
+Update publishing pipeline to use GitHub actions for ppx binaries([#44](https://github.com/ahrefs/bs-emotion/pull/44). This breaks compatibility with macOS 10.13 and 10.14.
 
 ## 1.0.1
 

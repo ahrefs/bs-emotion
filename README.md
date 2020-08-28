@@ -5,9 +5,13 @@
 
 BuckleScript bindings to [Emotion](https://emotion.sh).
 
-## BuckleScript v7+
+## BuckleScript v8+
 
-`bs-emotion` and `bs-emotion-ppx` are compatible with BuckleScript v7 starting from version 1.0.0.
+`bs-emotion` and `bs-emotion-ppx` are compatible with BuckleScript v7 starting from version 2.0.0.
+
+## Previous versions
+
+Use v1.0.1 if you need compatibility with BuckleScript v7.
 
 If you need to use them with BuckleScript v5 or below, install the earlier versions:
 - `@ahrefs/bs-emotion` version ^0.1.2

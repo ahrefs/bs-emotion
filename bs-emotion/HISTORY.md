@@ -2,7 +2,10 @@
 
 ## Next
 
-Noop. Sync version with `bs-emotion-ppx`.
+
+## 2.0.0
+
+Upgrade `bs-config` to remove unneeded jsx2 option to support v8 ([#50](https://github.com/ahrefs/bs-emotion/pull/50) by **[@rusty-key](https://github.com/rustykey)**))
 
 ## 1.0.1
 
