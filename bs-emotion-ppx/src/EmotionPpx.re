@@ -311,7 +311,7 @@ class cssMapper = {
 let structure_mapper = s => (new cssMapper)#structure(s);
 
 let () =
-Ppxlib.Driver.register_transformation(
+  Ppxlib.Driver.register_transformation(
     ~preprocess_impl=structure_mapper,
     "bs-emotion-ppx",
   );

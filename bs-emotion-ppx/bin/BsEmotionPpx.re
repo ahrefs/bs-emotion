@@ -1,4 +1,4 @@
-open Ppxlib
-open EmotionPpx
+open Ppxlib;
+open EmotionPpx;
 
-let _ = Driver.standalone()
+let _ = Driver.standalone();
