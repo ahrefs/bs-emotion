@@ -3,18 +3,20 @@
   "description": "Used to define the native dependencies of bs-emotion-ppx",
   "scripts": {
     "format": "esy b dune build @fmt --auto-promote --root .",
-    "release-static": "esy b dune build --root . --only-packages bs-emotion-ppx --ignore-promoted-rules --no-config --profile release-static"
+    "release-static":
+      "esy b dune build --root . --only-packages bs-emotion-ppx --ignore-promoted-rules --no-config --profile release-static"
   },
   "esy": {
-    "build": [["dune", "build", "-p", "bs-emotion-ppx"]],
+    "build": [ [ "dune", "build", "-p", "bs-emotion-ppx" ] ],
     "buildsInSource": "_build"
   },
   "dependencies": {
-    "ocaml": "4.14.x",
+    "@opam/ppxlib": ">= 0.27.0",
     "@opam/reason": "~3.8.1",
-    "@opam/ppxlib": ">= 0.27.0"
+    "ocaml": "4.14.x"
   },
   "devDependencies": {
-    "@opam/merlin": "*"
+    "@opam/merlin": "*",
+    "@opam/ocaml-lsp-server": "1.13.1"
   }
 }

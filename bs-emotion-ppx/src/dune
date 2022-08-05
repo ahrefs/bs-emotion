@@ -1,7 +1,8 @@
 (library
  (name EmotionPpx)
  (public_name bs-emotion-ppx.lib)
- (libraries ocaml-migrate-parsetree)
+ (libraries ppxlib str)
+ (preprocess (pps ppxlib.metaquot))
  (flags
   (:standard -w -9))
  (kind ppx_rewriter))
