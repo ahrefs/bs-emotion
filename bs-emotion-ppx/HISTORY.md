@@ -1,5 +1,11 @@
 # History
 
+## 3.0.0
+
+Use Rosetta for darwin arm64 ([#61](https://github.com/ahrefs/bs-emotion/pull/61))
+Remove Windows build due to esy issues ([#62](https://github.com/ahrefs/bs-emotion/pull/62))
+Use ppxlib ([#62](https://github.com/ahrefs/bs-emotion/pull/62))
+
 ## 2.0.0
 
 Changed path to binary (bsconfig ppx-flags need to be updated).
