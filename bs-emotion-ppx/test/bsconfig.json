@@ -1,7 +1,7 @@
 {
   "name": "bs-emotion-ppx-integration-test",
   "sources": ["src"],
-  "ppx-flags": ["esy x bs-emotion-ppx"],
+  "ppx-flags": ["esy x bs-emotion-ppx -as-ppx"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true
