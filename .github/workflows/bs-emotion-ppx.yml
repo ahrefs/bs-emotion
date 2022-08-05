@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/setup-node@v1
         with:
@@ -103,12 +103,12 @@ jobs:
           name: macos-latest
           path: bs-emotion-ppx/binaries/darwin
 
-      - name: Download windows artifacts
-        if: success()
-        uses: actions/download-artifact@v2
-        with:
-          name: windows-latest
-          path: bs-emotion-ppx/binaries/windows
+      # - name: Download windows artifacts
+      #   if: success()
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: windows-latest
+      #     path: bs-emotion-ppx/binaries/windows
 
       - name: Move artifacts
         if: success()
@@ -117,7 +117,7 @@ jobs:
           ls -la binaries
           ls -la binaries/darwin
           mv binaries/darwin/BsEmotionPpx.exe exe/bs-emotion-ppx-darwin-x64.exe
-          mv binaries/windows/BsEmotionPpx.exe exe/bs-emotion-ppx-win-x64.exe
+          # mv binaries/windows/BsEmotionPpx.exe exe/bs-emotion-ppx-win-x64.exe
           mv binaries/linux/BsEmotionPpx.exe exe/bs-emotion-ppx-linux-x64.exe
 
       - name: Upload artifacts ${{ matrix.os }}

@@ -1,4 +1,4 @@
-open Migrate_parsetree
-open EmotionPpx
+open Ppxlib;
+open EmotionPpx;
 
-let _ = Driver.run_as_ppx_rewriter()
+let _ = Driver.standalone();

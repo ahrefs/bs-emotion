@@ -1,10 +1,5 @@
-open Migrate_parsetree;
-open Ast_406;
-open Ast_mapper;
+open Ppxlib;
 open Ast_helper;
-open Asttypes;
-open Parsetree;
-open Longident;
 
 type contents =
   | Match(expression, list(case))
@@ -28,7 +23,9 @@ let css = (className, contents) =>
                 [
                   (
                     Nolabel,
-                    Exp.constant(Pconst_string(className.txt, None)),
+                    Exp.constant(
+                      Pconst_string(className.txt, Location.none, None),
+                    ),
                   ),
                 ],
               ),
@@ -44,9 +41,10 @@ let css = (className, contents) =>
     ],
   );
 
-let cssMapper = (_config, _cookies) => {
-  ...default_mapper,
-  structure_item: (mapper, item) =>
+class cssMapper = {
+  as _;
+  inherit class Ast_traverse.map as super;
+  pub! structure_item = item => {
     switch (item.pstr_desc) {
     | Pstr_value(
         Nonrecursive,
@@ -305,14 +303,15 @@ let cssMapper = (_config, _cookies) => {
         ],
       )
 
-    | _ => default_mapper.structure_item(mapper, item)
-    },
+    | _ => super#structure_item(item)
+    };
+  };
 };
 
+let structure_mapper = s => (new cssMapper)#structure(s);
+
 let () =
-  Migrate_parsetree.Driver.register(
-    ~name="bs-emotion-ppx",
-    ~args=[],
-    Migrate_parsetree.Versions.ocaml_406,
-    cssMapper,
+  Ppxlib.Driver.register_transformation(
+    ~preprocess_impl=structure_mapper,
+    "bs-emotion-ppx",
   );
