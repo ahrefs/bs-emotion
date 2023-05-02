@@ -1,5 +1,8 @@
 # bs-emotion
 
+> **Warning**
+> This repository is no longer maintained, as we don't use it anymore at Ahrefs. For alternatives, check [styled-ppx](https://github.com/davesnx/styled-ppx/) or [bs-css](https://github.com/giraud/bs-css).
+
 <a href="https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion%22"><img alt="bs-emotion status" src="https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion/badge.svg"></a>
 <a href="https://github.com/ahrefs/bs-emotion/actions?query=workflow%3A%22Build+bs-emotion-ppx%22"><img alt="bs-emotion-ppx status" src="https://github.com/ahrefs/bs-emotion/workflows/Build%20bs-emotion-ppx/badge.svg"></a>
 
